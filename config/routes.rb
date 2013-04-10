@@ -1,4 +1,11 @@
 Home::Application.routes.draw do
+  
+  root to: 'home#index'
+  match '/home' => 'home#index'
+  match '/about' => 'home#about'
+  match '/contact_us' => 'home#contact_us'
+  
+  
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
