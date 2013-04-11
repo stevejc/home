@@ -7,6 +7,7 @@ gem 'rails', '3.2.13'
 
 gem 'carrierwave'
 gem 'fog'
+gem 'font-awesome-rails'
 gem 'sqlite3'
 
 group :development do
