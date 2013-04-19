@@ -13,3 +13,56 @@
  *= require_self
  *= require_tree .
  */
+
+.buy-now h3 {
+	display: inline;
+}
+
+.buy-now a {
+	float: right;
+	margin-top: 7px;
+}
+
+.listing-row-image {
+	display: block;
+	float: left;
+	width: 178px;
+}
+
+.listing-row-item {
+	float: left;
+	overflow: hidden;
+	width: 360px;
+	height: 120px;
+	margin: 0px;
+	padding: 0px;
+	background: yellow;
+}
+
+.listing-row-title {
+	font-size: 18px;
+	font-weight: 600;
+	color: #4383c5;
+	
+}
+
+.listing-row-seller {
+	float: left;
+	overflow: hidden;
+	width: 360px;
+	height: 67px;
+	margin: 0px;
+	padding: 0px;
+	background: yellow;
+}
+
+.listing-row-price {
+	font-weight: 600;
+	font-size: 32px;
+	color: #383834;
+	line-height: 28px;
+}
+
+
+
+
