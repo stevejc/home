@@ -1,0 +1,28 @@
+<h1>User Show</h1>
+
+<table class="table">
+  <tr>
+    <td><b>First Name:</b></td>
+    <td>
+      <%= @user.first_name %>
+    </td>
+  </tr> 
+
+  <tr>
+    <td><b>Last Name:</b></td>
+    <td>
+      <%= @user.last_name %>
+    </td>
+  </tr>
+  
+  <tr>
+    <td><b>Email:</b></td>
+    <td>
+      <%= @user.email %>
+    </td>
+  </tr>
+   
+</table>
+
+<%= link_to 'Back', users_path, :class => 'btn' %>
+<%= link_to 'Edit', edit_user_path(@user), :class => 'btn' %>

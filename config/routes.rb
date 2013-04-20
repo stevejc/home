@@ -1,6 +1,9 @@
 Home::Application.routes.draw do
+  resources :users
   
   root to: 'home#index'
+  
+  match '/signup',  to: 'users#new'
   match '/home' => 'home#index'
   match '/about' => 'home#about'
   match '/contact_us' => 'home#contact_us'
