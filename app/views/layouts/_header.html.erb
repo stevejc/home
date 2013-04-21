@@ -13,10 +13,14 @@
   					<li><%= link_to "Contact Us", contact_us_path %></li>
   			</ul>	
   			<ul class="nav pull-right">
-  				  <li><%= link_to "Register", signup_path %></li>
-  				  <li><%= link_to "Sign In" %></li>	
-  				  <li><a href="#"><i class="icon-shopping-cart"></i> Cart</a></li>
-  
+  			  <% if signed_in? %>
+  			    <li><%= link_to "Profile", current_user %></li>
+  			    <li><%= link_to "Sign Out", signout_path, method: "delete" %></li>
+  			  <% else %>
+    			  <li><%= link_to "Register", signup_path %></li>
+    			  <li><%= link_to "Sign In", signin_path %></li>
+  			  <% end %>				  	
+				  <li><a href="#"><i class="icon-shopping-cart"></i> Cart</a></li>
   			</ul>
 			</div>
 		</div>
