@@ -1,0 +1,32 @@
+<%= form_for(@shop) do |f| %>
+  <%= render 'shared/error_messages', object: f.object %>
+
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+  
+  <%= f.label :city %>
+  <%= f.text_field :city %>
+
+  <%= f.label :state %>
+  <%= f.text_field :state %>
+   
+  <%= f.label :zip %>
+  <%= f.text_field :zip %>
+
+  <%= f.label :about, "Write an about section for your shop" %>
+  <%= f.text_area :about %>
+  
+  <%= f.label :refund, "Refund Policy" %>
+  <%= f.text_area :refund %>
+  
+  <div class="form-actions">
+    
+    <% if params[:action] == "edit" %>
+      <%= f.submit "Save changes", class: "btn btn-warning" %>
+      <%= link_to 'Cancel', user_path(current_user), :class => 'btn' %>
+    <% else %>
+      <%= f.submit "Set Up Your Shop", class: "btn btn-warning" %>
+      <%= link_to 'Cancel', users_path(current_user), :class => 'btn' %>
+    <% end %>
+  </div>
+<% end %>

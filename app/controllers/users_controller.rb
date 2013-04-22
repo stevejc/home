@@ -13,7 +13,7 @@ class UsersController < ApplicationController
     @user = User.new(params[:user])
     if @user.save
       sign_in @user
-      redirect_to @user, notice: "Welcome to Home"
+      redirect_to @user, success: "Welcome to Home"
     else
       render 'new'
     end
@@ -25,20 +25,13 @@ class UsersController < ApplicationController
   def update
     if @user.update_attributes(params[:user])
       sign_in @user
-      redirect_to user_path(@user), notice: "You have successfully updated your profile"
+      redirect_to user_path(@user), success: "You have successfully updated your profile"
     else
       render :edit
     end
   end
   
   private
-
-     def signed_in_user
-       unless signed_in?
-         store_location
-         redirect_to signin_url, notice: "Please sign in."
-       end
-     end
      
      def correct_user
        @user = User.find(params[:id])

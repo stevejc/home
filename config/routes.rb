@@ -1,6 +1,7 @@
 Home::Application.routes.draw do
   resources :users
   resources :sessions, only: [:new, :create, :destroy]
+  resources :shops
   
   root to: 'home#index'
   
