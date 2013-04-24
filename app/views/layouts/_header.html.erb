@@ -15,6 +15,11 @@
   			<ul class="nav pull-right">
   			  <% if signed_in? %>
   			    <li><%= link_to "Profile", current_user %></li>
+  			    <% if current_user.shop != nil %>
+    			    <li><%= link_to "Store", yourshop_path %></li>
+    			  <% else %>
+      			  <li><%= link_to "Create a Store", new_shop_path %></li>
+  			    <% end %>
   			    <li><%= link_to "Sign Out", signout_path, method: "delete" %></li>
   			  <% else %>
     			  <li><%= link_to "Register", signup_path %></li>

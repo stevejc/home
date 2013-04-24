@@ -19,6 +19,10 @@ class ShopsController < ApplicationController
     @shop = Shop.find(params[:id])
   end
   
+  def yourshop
+    @shop = current_user.shop
+  end
+  
   def edit
     @shop = Shop.find(params[:id])
   end

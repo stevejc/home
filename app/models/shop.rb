@@ -17,6 +17,8 @@
 class Shop < ActiveRecord::Base
   attr_accessible :about, :city, :name, :refund, :state, :zip
   belongs_to :user
+  has_many :items
+  
   validates :user_id,  presence: true
   validates :name, presence: true, length: { maximum: 140 }
   validates :city, presence: true, length: { maximum: 60 }

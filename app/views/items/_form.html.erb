@@ -1,0 +1,27 @@
+<%= form_for(@item) do |f| %>
+  <%= render 'shared/error_messages', object: f.object %>
+
+  <%= f.label :title %>
+  <%= f.text_field :title %>
+  
+  <%= f.label :description %>
+  <%= f.text_area :description %>
+
+  <%= f.label :price %>
+  <%= f.text_field :price %>
+   
+  <%= f.label :quantity %>
+  <%= f.text_field :quantity %>
+  
+  <div class="form-actions">
+    
+    <% if params[:action] == "edit" %>
+      <%= f.submit "Save changes", class: "btn btn-warning" %>
+      <%= link_to 'Cancel', user_path(current_user), :class => 'btn' %>
+    <% else %>
+      <%= f.submit "Add Item", class: "btn btn-warning" %>
+      <%= link_to 'Cancel', users_path(current_user), :class => 'btn' %>
+    <% end %>
+  </div>
+<% end %>
+

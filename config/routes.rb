@@ -2,6 +2,7 @@ Home::Application.routes.draw do
   resources :users
   resources :sessions, only: [:new, :create, :destroy]
   resources :shops
+  resources :items
   
   root to: 'home#index'
   
@@ -12,6 +13,7 @@ Home::Application.routes.draw do
   match '/about' => 'home#about'
   match '/contact_us' => 'home#contact_us'
   match '/lighting' => 'home#lighting'
+  match '/yourshop' => 'shops#yourshop'
   
   
   # The priority is based upon order of creation:
