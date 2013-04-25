@@ -1,0 +1,42 @@
+<h1>Shop Item</h1>
+
+<table class="table">
+  <tr>
+    <td><b>Item:</b></td>
+    <td>
+      <%= @item.title %>
+    </td>
+  </tr> 
+
+  <tr>
+    <td><b>Description:</b></td>
+    <td>
+      <%= @item.description %>
+    </td>
+  </tr>
+  
+  <tr>
+    <td><b>Price:</b></td>
+    <td>
+      <%= @item.price %>
+    </td>
+  </tr>
+  
+  <tr>
+    <td><b>Quantity Available:</b></td>
+    <td>
+      <%= @item.quantity %>
+    </td>
+  </tr>
+  
+  <tr>
+    <td><b>Shop:</b></td>
+    <td>
+      <%= @item.shop.name %>
+    </td>
+  </tr>
+
+   
+</table>
+
+<%= link_to 'Back', items_path, :class => 'btn' %>

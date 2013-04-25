@@ -14,6 +14,8 @@ Home::Application.routes.draw do
   match '/contact_us' => 'home#contact_us'
   match '/lighting' => 'home#lighting'
   match '/yourshop' => 'shops#yourshop'
+  match '/youritem/:id' => 'items#youritem', :as => :youritem
+  match '/youritems' => 'items#youritems'
   
   
   # The priority is based upon order of creation:
