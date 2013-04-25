@@ -18,12 +18,15 @@
   </tr>
 
 <% @items.each do |item| %>
+  <tr data-link="<%= youritem_path(item) %>">
     <td><%= item.title %></td>
     <td><%= item.description %></td>
     <td><%= item.price %></td>
     <td><%= item.quantity %></td>
+  </tr>
 <% end %>
 </table>
 
 
 <%= link_to "Add Item", new_item_path %>
+

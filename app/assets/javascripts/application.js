@@ -14,3 +14,12 @@
 //= require jquery_ujs
 //= require twitter/bootstrap
 //= require_tree .
+
+jQuery(function($) {
+
+// makes tr's clickable
+$("tr[data-link]").click(function() {
+  window.location = this.dataset.link
+});
+
+})
