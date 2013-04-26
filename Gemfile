@@ -9,7 +9,7 @@ gem 'bcrypt-ruby'
 gem 'carrierwave'
 gem 'fog'
 gem 'font-awesome-rails'
-gem 'sqlite3'
+gem 'pg'
 
 group :development do
   gem 'annotate'
