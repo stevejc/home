@@ -25,8 +25,7 @@
                 </ul>
       			  </li>
     			  <% else %>
-        			  <%= link_to "Create a Store", new_shop_path %>
-      			  </li>
+        			  <li><%= link_to "Create a Store", new_shop_path %></li>
   			    <% end %>
   			    <li><%= link_to "Sign Out", signout_path, method: "delete" %></li>
   			  <% else %>
