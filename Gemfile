@@ -11,8 +11,9 @@ gem 'fog'
 gem 'font-awesome-rails'
 gem 'pg'
 
-group :development do
+group :development, :test do
   gem 'annotate'
+  gem 'foreman'
 end
 
 # Gems used only for assets and not required

@@ -13,6 +13,11 @@
   <%= f.label :quantity %>
   <%= f.text_field :quantity %>
   
+  <%= f.fields_for :itemimages do |builder| %>
+    <%= builder.label :image %>
+    <%= builder.file_field :image %>
+  <% end %>
+  
   <div class="form-actions">
     
     <% if params[:action] == "edit" %>

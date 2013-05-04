@@ -13,8 +13,10 @@
 #
 
 class Item < ActiveRecord::Base
-  attr_accessible :description, :price, :quantity, :title
+  attr_accessible :description, :price, :quantity, :title, :itemimages_attributes
   belongs_to :shop
+  has_many :itemimages
+  accepts_nested_attributes_for :itemimages
   
   validates :shop_id,  presence: true
   validates :title, :description, :price, presence: true

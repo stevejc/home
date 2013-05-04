@@ -1,6 +1,13 @@
 <h1>Shop Item</h1>
 
 <table class="table">
+
+  <tr>
+    <td><b>Photo:</b></td>
+    <td>
+      <%= image_tag(@item.itemimages.first.image, :size => "150x150") if @item.itemimages.first.image.present? %>
+    </td>
+  </tr>
   <tr>
     <td><b>Item:</b></td>
     <td>
