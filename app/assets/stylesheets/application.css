@@ -63,6 +63,32 @@
 	line-height: 28px;
 }
 
+.layout-main, .item-order, .item-shop {
+		border: solid lightgrey 1px;
+}
+
+.layout-main {
+	width: 68%;
+	height: 1000px;
+	max-width: 660px;
+	border: solid lightgrey 1px;
+	display: inline;
+	float:left;
+}
+
+.layout-right {
+	width: 31%;
+	max-width: 300px;
+	float: right;
+}
+
+.item-order {
+	border: solid lightgrey 1px;
+	background-color: rgba(0,0,0,0.05)
+}
+
+
+
 
 
 

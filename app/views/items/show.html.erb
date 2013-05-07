@@ -1,49 +1,40 @@
 <h1>Shop Item</h1>
 
-<table class="table">
-
-  <tr>
-    <td><b>Photo:</b></td>
-    <td>
-      <%= image_tag(@item.itemimages.first.image, :size => "150x150") if @item.itemimages.first.image.present? %>
-    </td>
-  </tr>
-  <tr>
-    <td><b>Item:</b></td>
-    <td>
-      <%= @item.title %>
-    </td>
-  </tr> 
-
-  <tr>
-    <td><b>Description:</b></td>
-    <td>
-      <%= @item.description %>
-    </td>
-  </tr>
-  
-  <tr>
-    <td><b>Price:</b></td>
-    <td>
-      <%= @item.price %>
-    </td>
-  </tr>
-  
-  <tr>
-    <td><b>Quantity Available:</b></td>
-    <td>
-      <%= @item.quantity %>
-    </td>
-  </tr>
-  
-  <tr>
-    <td><b>Shop:</b></td>
-    <td>
-      <%= @item.shop.name %>
-    </td>
-  </tr>
-
-   
-</table>
-
 <%= link_to 'Back', items_path, :class => 'btn' %>
+
+<div class="clearfix">
+  <div class="layout-main">
+    <div class="item-header">
+      <h3><%= @item.title %></h3>
+    </div>
+    <div class="item-images">
+      <%= image_tag(@item.itemimages.first.image) if @item.itemimages.first.image.present? %>
+    </div>
+    <div class="item-description">
+      <h4>What's included in my order?</h4>
+      <%= @item.description %>
+    </div>
+  </div>
+  <div class="layout-right">
+    <div class="item-order">
+      <h4><%= number_to_currency(@item.price) %></h4>
+      <%= link_to 'Ask a question', about_path, :class => 'btn' %>
+      <div>You can add details in the next step</div>
+      <%= link_to (content_tag(:i, "", :class=>"icon-shopping-cart")) + ' Place Order', about_path, :class => 'btn btn-success place-order' %>
+    </div>
+    <div class="item-shop">
+      <div>
+        <h4>Verified Home Shop-Owner</h4>
+      </div>
+      <div class="item-shop-details">
+        <div class="item-shop-name">
+          <h4><%= @item.shop.name %></h4>
+        </div>
+        <div class="item-shop-location">
+          <%= @item.shop.city %>, <%= @item.shop.state %>
+        </div>
+        <%= link_to 'View Store', shop_path(@item.shop), :class => 'btn' %>
+      </div>
+    </div>
+  </div>
+</div>
