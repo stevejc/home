@@ -3,6 +3,8 @@ Home::Application.routes.draw do
   resources :sessions, only: [:new, :create, :destroy]
   resources :shops
   resources :items
+  resources :line_items
+  resources :carts
   
   root to: 'home#index'
   
