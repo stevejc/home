@@ -32,7 +32,7 @@
     			  <li><%= link_to "Register", signup_path %></li>
     			  <li><%= link_to "Sign In", signin_path %></li>
   			  <% end %>				  	
-				  <li><a href="#"><span class="icon-shopping-cart"></span> Cart</a></li>
+				  <li><%= link_to (content_tag(:i, "", :class=>"icon-shopping-cart")) + " Cart", cart_path(session[:cart_id]) %></li>
   			</ul>
 			</div>
 		</div>
