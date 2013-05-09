@@ -14,4 +14,16 @@ class CartsController < ApplicationController
     end
   end
   
+  def destroy
+    @cart = current_cart
+    @cart.destroy
+    session[:cart_id] = nil
+
+    respond_to do |format|
+      format.html { redirect_to root_url,
+        notice: 'Your cart is currently empty' }
+      format.json { head :no_content }
+    end
+  end
+  
 end
