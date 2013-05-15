@@ -11,7 +11,7 @@
 #
 
 class Itemimage < ActiveRecord::Base
-  attr_accessible :image, :image_order, :item_id
+  attr_accessible :image, :image_order, :item_id, :remove_image
   belongs_to :item
   
   mount_uploader :image, PikUploader

@@ -2,7 +2,7 @@ class ItemsController < ApplicationController
   
   def new
     @item = Item.new
-    @item.itemimages.build
+    @item.itemimage.build
   end
   
   def create
@@ -38,7 +38,8 @@ class ItemsController < ApplicationController
   
   def update
     @item = Item.find(params[:id])
-    if @item.update_attributes(params[:item])
+    @image = @item.itemimage
+    if @item.update_attributes(params[:item]) 
       redirect_to youritem_path(@item), notice: 'Your item was successfully updated.'
     else
       render :edit 

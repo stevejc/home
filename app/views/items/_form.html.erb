@@ -13,9 +13,20 @@
   <%= f.label :quantity %>
   <%= f.text_field :quantity %>
   
-  <%= f.fields_for :itemimages do |builder| %>
+  <%= f.fields_for :itemimage do |builder| %>
+    <% if builder.object.image? %>
+      <div class='control-group'>
+        <label class="control-label">Current image</label>
+        <%= image_tag(builder.object.image, :width => '35')  %>
+        <label>
+           <%= builder.check_box :remove_image %>
+           Remove image
+         </label>
+      </div>
+    <% end %>
     <%= builder.label :image %>
     <%= builder.file_field :image %>
+ 
   <% end %>
   
   <div class="form-actions">

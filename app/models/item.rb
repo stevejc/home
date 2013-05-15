@@ -13,11 +13,11 @@
 #
 
 class Item < ActiveRecord::Base
-  attr_accessible :description, :price, :quantity, :title, :itemimages_attributes
+  attr_accessible :description, :price, :quantity, :title, :itemimage_attributes
   belongs_to :shop
-  has_many :itemimages
+  has_one :itemimage
   has_many :line_items
-  accepts_nested_attributes_for :itemimages
+  accepts_nested_attributes_for :itemimage
   
   before_destroy :ensure_not_referenced_by_any_line_item
   
