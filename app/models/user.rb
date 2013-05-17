@@ -17,6 +17,7 @@ class User < ActiveRecord::Base
   has_secure_password
   has_one :shop, dependent: :destroy
   has_many :items, :through => :shop
+  has_many :orders
   
   before_save { self.email.downcase! }
   before_save :create_remember_token

@@ -1,0 +1,21 @@
+<%= form_for(@order) do |f| %>
+  <%= render 'shared/error_messages', object: f.object %>
+  
+  <%= f.label :name, "Ship to name" %>
+  <%= f.text_field :name %>
+  
+  <%= f.label :address, "Ship to address:" %>
+  <%= f.text_area :address, rows: 3, cols: 40 %>
+  
+  <div class="form-actions">
+    
+    <% if params[:action] == "edit" %>
+      <%= f.submit "Save changes", class: "btn btn-warning" %>
+      <%= link_to 'Cancel', user_path(current_user), :class => 'btn' %>
+    <% else %>
+      <%= f.submit "Place Order", class: "btn btn-warning" %>
+      <%= link_to 'Cancel', @cart, :class => 'btn' %>
+    <% end %>
+  </div>
+<% end %>
+

@@ -5,6 +5,7 @@ Home::Application.routes.draw do
   resources :items
   resources :line_items
   resources :carts
+  resources :orders
   
   root to: 'home#index'
   
