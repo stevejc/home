@@ -33,4 +33,8 @@ class OrdersController < ApplicationController
     @orders = current_user.shop.orders
   end
   
+  def yourorders
+    @orders = current_user.orders
+  end
+  
 end
