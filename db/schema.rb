@@ -43,12 +43,14 @@ ActiveRecord::Schema.define(:version => 20130517141733) do
     t.datetime "updated_at",                :null => false
     t.integer  "quantity",   :default => 1
     t.integer  "order_id"
+    t.integer  "shop_id"
   end
 
   create_table "orders", :force => true do |t|
     t.string   "name"
     t.text     "address"
     t.integer  "user_id"
+    t.integer  "shop_id"
     t.integer  "shipping_address_id"
     t.datetime "created_at",          :null => false
     t.datetime "updated_at",          :null => false

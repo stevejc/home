@@ -5,6 +5,7 @@ class LineItemsController < ApplicationController
     item = Item.find(params[:item_id])
     @line_item = @cart.add_item(item.id)
     @line_item.item = item
+    @line_item.shop_id = @line_item.item.shop_id
 
     respond_to do |format|
       if @line_item.save

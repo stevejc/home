@@ -13,6 +13,7 @@ class OrdersController < ApplicationController
     @order = Order.new(params[:order])
     @order.add_line_items_from_cart(current_cart)
     @order.user_id = current_user.id
+    @order.shop_id = current_cart.line_items.first.item.shop_id
     
     if @order.save
       Cart.destroy(session[:cart_id])
@@ -22,6 +23,14 @@ class OrdersController < ApplicationController
       @cart = current_cart
       render action: "new"
     end
+  end
+  
+  def index
+    @orders = current_user.orders
+  end
+  
+  def yourshoporders
+    @orders = current_user.shop.orders
   end
   
 end
