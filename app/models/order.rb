@@ -2,7 +2,7 @@ class Order < ActiveRecord::Base
   attr_accessible :name, :address
   has_many :line_items, dependent: :destroy
   has_one :user
-  has_one :shop, :through => :line_items
+  has_one :shop
   
   validates :name, :address, presence: true
   

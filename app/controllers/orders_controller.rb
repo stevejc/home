@@ -25,16 +25,21 @@ class OrdersController < ApplicationController
     end
   end
   
-  def index
-    @orders = current_user.orders
-  end
-  
   def yourshoporders
     @orders = current_user.shop.orders
   end
   
   def yourorders
     @orders = current_user.orders
+  end
+  
+  def show
+    @order = Order.find(params[:id])
+  end
+  
+  def yourorder
+    @order = Order.find(params[:id])
+    redirect_to orders_path if @order.shop_id != current_user.shop.id
   end
   
 end
