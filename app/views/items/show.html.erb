@@ -8,7 +8,7 @@
       <h3><%= @item.title %></h3>
     </div>
     <div class="item-images">
-      <%= image_tag(@item.itemimage.image) if @item.itemimage.image.present? %>
+      <%= image_tag(@item.itemimage.image) if @item.itemimage.present? %>
     </div>
     <div class="item-description">
       <h4>What's included in my order?</h4>
@@ -20,7 +20,7 @@
       <h4><%= number_to_currency(@item.price) %></h4>
       <%= link_to 'Ask a question', about_path, :class => 'btn' %>
       <div>You can add details in the next step</div>
-      <%= button_to (content_tag(:i, "", :class=>"icon-shopping-cart")) + ' Add to Cart', line_items_path(item_id: @item), :class => 'btn btn-success place-order' %>
+      <%= link_to (content_tag(:i, "", :class=>"icon-shopping-cart")) + ' Add to Cart', line_items_path(item_id: @item), :method => :post, :class => 'btn btn-success place-order' %>
     </div>
     <div class="item-shop">
       <div>
