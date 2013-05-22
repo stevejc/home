@@ -1,6 +1,6 @@
 # == Schema Information
 #
-# Table name: item_images
+# Table name: itemimages
 #
 #  id          :integer          not null, primary key
 #  item_id     :integer

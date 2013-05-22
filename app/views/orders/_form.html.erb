@@ -10,7 +10,6 @@
   <div class="form-actions">
     
     <% if params[:action] == "edit" %>
-      <%= f.hidden_field(:shop_id) %>
       <%= f.submit "Save changes", class: "btn btn-warning" %>
       <%= link_to 'Cancel', user_path(current_user), :class => 'btn' %>
     <% else %>

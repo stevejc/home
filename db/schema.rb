@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130517141733) do
+ActiveRecord::Schema.define(:version => 20130522152607) do
 
   create_table "carts", :force => true do |t|
     t.datetime "created_at", :null => false
@@ -54,6 +54,10 @@ ActiveRecord::Schema.define(:version => 20130517141733) do
     t.integer  "shipping_address_id"
     t.datetime "created_at",          :null => false
     t.datetime "updated_at",          :null => false
+    t.string   "carrier"
+    t.text     "tracking_number"
+    t.date     "ship_date"
+    t.string   "status"
   end
 
   create_table "shipping_addresses", :force => true do |t|
