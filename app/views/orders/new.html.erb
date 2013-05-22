@@ -1,6 +1,18 @@
 <h1>New Order</h1>
 
+<% if !@shippingaddresses.empty? %>
 <fieldset>
-<legend>Please Enter Your Details</legend>
-<%= render 'form' %> 
+<legend>Select a shipping address </legend>
 </fieldset>
+
+<%= render 'selectaddress' %>
+
+<% end %>
+
+
+
+<fieldset>
+<legend>Add a new shipping address </legend>
+<%= render 'addaddress' %> 
+</fieldset>
+

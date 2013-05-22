@@ -1,5 +1,5 @@
 class Order < ActiveRecord::Base
-  attr_accessible :name, :address
+  attr_accessible :name, :address, :shop_id
   has_many :line_items, dependent: :destroy
   has_one :user
   has_one :shop

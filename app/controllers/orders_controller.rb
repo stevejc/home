@@ -7,6 +7,18 @@ class OrdersController < ApplicationController
       return
     end
     @order = Order.new
+    @shippingaddresses = current_user.shipping_addresses
+    @shippingaddress = ShippingAddress.new
+  end
+  
+  def pay
+    @cart = current_cart
+    if @cart.line_items.empty?
+      redirect_to root_url, notice: "Your cart is empty"
+      return
+    end
+    @order = Order.new
+    @shippingaddress = ShippingAddress.find(params[:address_id])
   end
   
   def create
@@ -41,5 +53,21 @@ class OrdersController < ApplicationController
     @order = Order.find(params[:id])
     redirect_to orders_path if @order.shop_id != current_user.shop.id
   end
+  
+  def edit
+    @order = Order.find(params[:id])
+  end
+  
+  def update
+    @order = Order.find(params[:id])
+    if @order.update_attributes(params[:order])
+      redirect_to order_path(@order), notice: 'Your order was successfully updated.'
+    else
+      render :edit
+    end
+    
+  end
+  
+
   
 end

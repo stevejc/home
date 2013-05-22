@@ -6,6 +6,7 @@ Home::Application.routes.draw do
   resources :line_items
   resources :carts
   resources :orders
+  resources :shipping_addresses
   
   root to: 'home#index'
   
@@ -22,6 +23,7 @@ Home::Application.routes.draw do
   match '/yourshoporders' => 'orders#yourshoporders'
   match '/yourorders' => 'orders#yourorders'
   match '/yourorder/:id' => 'orders#yourorder', :as => :yourorder
+  match '/pay' => 'orders#pay'
   
   
   # The priority is based upon order of creation:

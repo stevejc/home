@@ -18,6 +18,7 @@ class User < ActiveRecord::Base
   has_one :shop, dependent: :destroy
   has_many :items, :through => :shop
   has_many :orders
+  has_many :shipping_addresses
   
   before_save { self.email.downcase! }
   before_save :create_remember_token

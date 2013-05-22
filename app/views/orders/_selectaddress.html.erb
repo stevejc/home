@@ -1,0 +1,17 @@
+
+<% @shippingaddresses.each do |address| %>
+  <div>
+    <b><%= address.name %></b><br/>
+    <%= address.id %><br/>
+    <%= address.address1 %><br/>
+    <% if address.address2? %>
+      <%= address.address2 %><br/>
+    <% end %>
+    <%= address.city + ", " + address.state + "  " + address.zip %><br/>
+  </div>
+  
+  <%= link_to "Ship to this address", pay_path(:address_id => address.id), :class => "btn btn-warning" %><br/>
+  <%= link_to 'Edit', @cart, :class => 'btn' %>  
+  <%= link_to 'Delete', @cart, :class => 'btn' %>
+<% end %>
+  
