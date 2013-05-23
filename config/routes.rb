@@ -24,6 +24,8 @@ Home::Application.routes.draw do
   match '/yourorders' => 'orders#yourorders'
   match '/yourorder/:id' => 'orders#yourorder', :as => :yourorder
   match '/pay' => 'orders#pay'
+  match '/shipmentdetails/:id/edit' => 'orders#shipment_details', :as => :edit_shipment
+  match '/shipmentdetails/:id' => 'orders#updateshipping', :as => :shipment, via: :put
   
   
   # The priority is based upon order of creation:

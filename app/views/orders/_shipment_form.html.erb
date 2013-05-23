@@ -1,0 +1,18 @@
+<%= form_for(@order, :url => shipment_path, :html => { :method => "put" }) do |f| %>
+
+  <%= render 'shared/error_messages', object: f.object %>
+  
+  <%= f.label :carrier %>
+  <%= f.text_field :carrier %>
+  
+  <%= f.label :tracking_number, "Tracking #1" %>
+  <%= f.text_field :tracking_number %>
+  
+  <%= f.label :ship_date, "Shipped Date" %>
+  <%= f.date_select :ship_date %>
+  
+  <div class="form-actions">
+    <%= f.submit "Save changes", class: "btn btn-warning" %>
+    <%= link_to 'Cancel', user_path(current_user), :class => 'btn' %>
+  </div>
+<% end %>
