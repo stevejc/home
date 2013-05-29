@@ -53,12 +53,19 @@
   
   <% @order.line_items.each do |line_item| %>
     <tr>
-      <td><%= line_item.item.title %></td>
+      <td><%= link_to line_item.item.title, item_path(line_item.item) %></td>
       <td></td>
       <td><%= line_item.quantity %></td>
       <td><%= number_to_currency(line_item.price) %></td>
     </tr>
-  <% end %>  
+  <% end %>
+  
+  <tr>
+  <td></td>
+  <td></td>
+  <td><b>Total Cost:</b></td>
+  <td><b><%= number_to_currency(@order.total_price) %></b></td>
+  </tr>  
    
 </table>
 
