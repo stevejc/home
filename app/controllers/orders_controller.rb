@@ -20,6 +20,7 @@ class OrdersController < ApplicationController
     end
     @order = Order.new
     @shippingaddress = ShippingAddress.find(params[:address_id])
+    @order.shipping_address_id = @shippingaddress.id
   end
   
   def create
@@ -27,6 +28,7 @@ class OrdersController < ApplicationController
     @order.add_line_items_from_cart(current_cart)
     @order.user_id = current_user.id
     @order.shop_id = current_cart.line_items.first.item.shop_id
+    @shippingaddress = ShippingAddress.find(@order.shipping_address_id)
     
     if @order.save
       Cart.destroy(session[:cart_id])
@@ -34,7 +36,7 @@ class OrdersController < ApplicationController
       redirect_to root_url, notice: 'Thank you for your order.'
     else
       @cart = current_cart
-      render action: "new"
+      render action: "pay"
     end
   end
   
