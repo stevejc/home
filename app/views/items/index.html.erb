@@ -1,31 +1,19 @@
 <h1>Items Index</h1>
 
-<div class="row">
-  <div class="span6">
-  	<h3>Items</h3>
-  </div>
+<% @items.in_groups_of(4,false) do |row_items| %>
+<div class="row-fluid">
 
-</div>
-
-<table class="table table-hover">
-  <tr>
-    <th>Item</th>
-    <th>Description</th>
-    <th>Price</th>
-    <th>Quantity</th>
-    
-
-  </tr>
-
-<% @items.each do |item| %>
-  <tr data-link="<%= item_path(item) %>">
-    <td><%= item.title %></td>
-    <td><%= item.description %></td>
-    <td><%= item.price %></td>
-    <td><%= item.quantity %></td>
-  </tr>
+<ul class="thumbnails">
+<% for item in row_items %>
+  <li class="span3 item-listing">
+    <%= link_to image_tag(item.itemimage.image, :border => 0), item_path(item) if item.itemimage.present? %>
+    <div><%= link_to item.title, item_path(item) %></div>
+    <%= link_to item.shop.name, shop_path(item.shop) %>   
+    <span class="right"><%= number_to_currency(item.price) %></span>
+  </li>
 <% end %>
-</table>
-
+</ul>
+</div>
+<% end %>
 
 

@@ -87,6 +87,21 @@
 	background-color: rgba(0,0,0,0.05)
 }
 
+.right {
+	float: right;
+}
+
+.item-listing {
+	border: 1px solid #e4e4e2;
+	padding: 4px;
+	border-radius: 3px;
+	box-shadow: 0 0 2px 0 rgba(0,0,0,.1);
+}
+
+.item-listing img {
+	border-radius: 3px 3px 0 0;
+}
+
 
 
 
