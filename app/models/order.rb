@@ -25,10 +25,19 @@ class Order < ActiveRecord::Base
   
   validates :name, :address, presence: true
   
+  after_create :update_prices
+  
   def add_line_items_from_cart(cart)
     cart.line_items.each do |item|
       item.cart_id = nil
       line_items << item
+    end
+  end
+  
+  def update_prices
+    line_items.each do |line_item|
+      line_item.price = line_item.item.price
+      line_item.save
     end
   end
   

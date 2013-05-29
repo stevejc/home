@@ -21,24 +21,44 @@
       <%= (@order.created_at).strftime("%m/%d/%Y") %>
     </td>
   </tr>
+
+</table>
+
+<h3>Shipping Address</h3>
+  
+<table>
   
   <tr>
-    <td><b>Ship to Name:</b></td>
     <td>
-      <%= @shippingaddress.name %>
-    </td>
-  </tr>
-  
-  <tr>
-    <td><b>Ship to address:</b></td>
-    <td>
+      <%= @shippingaddress.name %><br/>
       <%= @shippingaddress.address1 %><br/>
       <% if !@shippingaddress.address2.empty? %>
       <%= @shippingaddress.address2 %><br/>
       <% end %>
       <%= @shippingaddress.city %>, <%= @shippingaddress.state %>  <%= @shippingaddress.zip %>
     </td>
+  </tr>  
+   
+</table>
+
+<h3>Purchased Items</h3>
+
+<table class="table">
+  <tr>
+    <td>Item</td>
+    <td>Store</td>
+    <td>Quantity</td>
+    <td>Price</td>    
   </tr>
+  
+  <% @order.line_items.each do |line_item| %>
+    <tr>
+      <td><%= line_item.item.title %></td>
+      <td></td>
+      <td><%= line_item.quantity %></td>
+      <td><%= number_to_currency(line_item.price) %></td>
+    </tr>
+  <% end %>  
    
 </table>
 

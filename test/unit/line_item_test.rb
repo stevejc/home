@@ -10,6 +10,7 @@
 #  quantity   :integer          default(1)
 #  order_id   :integer
 #  shop_id    :integer
+#  price      :decimal(, )
 #
 
 require 'test_helper'

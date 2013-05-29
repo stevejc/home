@@ -46,6 +46,7 @@ class OrdersController < ApplicationController
   
   def yourorders
     @orders = current_user.orders
+    
   end
   
   def show
@@ -55,6 +56,7 @@ class OrdersController < ApplicationController
   
   def yourorder
     @order = Order.find(params[:id])
+    @shippingaddress = ShippingAddress.find(@order.shipping_address_id)
     redirect_to orders_path if @order.shop_id != current_user.shop.id
   end
   
