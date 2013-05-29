@@ -26,7 +26,7 @@ class LineItemsController < ApplicationController
     @line_item.destroy
 
     respond_to do |format|
-      format.html { redirect_to root_url }
+      format.html { redirect_to root_url, notice: "The #{@line_item.item.title} has been removed from your cart" }
       format.json { head :no_content }
     end
   end
