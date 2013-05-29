@@ -25,7 +25,7 @@ class Order < ActiveRecord::Base
   
   validates :name, :address, presence: true
   
-  after_create :update_prices
+  after_create :update_prices, :update_available_quantities
   
   def add_line_items_from_cart(cart)
     cart.line_items.each do |item|
@@ -38,6 +38,13 @@ class Order < ActiveRecord::Base
     line_items.each do |line_item|
       line_item.price = line_item.item.price
       line_item.save
+    end
+  end
+  
+  def update_available_quantities
+    line_items.each do |line_item|
+      line_item.item.quantity -= line_item.quantity
+      line_item.item.save
     end
   end
   
