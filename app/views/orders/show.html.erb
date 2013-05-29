@@ -21,6 +21,24 @@
       <%= (@order.created_at).strftime("%m/%d/%Y") %>
     </td>
   </tr>
+  
+  <tr>
+    <td><b>Ship to Name:</b></td>
+    <td>
+      <%= @shippingaddress.name %>
+    </td>
+  </tr>
+  
+  <tr>
+    <td><b>Ship to address:</b></td>
+    <td>
+      <%= @shippingaddress.address1 %><br/>
+      <% if !@shippingaddress.address2.empty? %>
+      <%= @shippingaddress.address2 %><br/>
+      <% end %>
+      <%= @shippingaddress.city %>, <%= @shippingaddress.state %>  <%= @shippingaddress.zip %>
+    </td>
+  </tr>
    
 </table>
 

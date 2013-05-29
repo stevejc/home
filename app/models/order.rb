@@ -21,6 +21,7 @@ class Order < ActiveRecord::Base
   has_many :line_items, dependent: :destroy
   has_one :user
   has_one :shop
+  has_one :shipping_address
   
   validates :name, :address, presence: true
   
