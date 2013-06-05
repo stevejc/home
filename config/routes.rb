@@ -27,6 +27,8 @@ Home::Application.routes.draw do
   match '/shipmentdetails/:id/edit' => 'orders#shipment_details', :as => :edit_shipment
   match '/shipmentdetails/:id' => 'orders#updateshipping', :as => :shipment, via: :put
   
+  match '/cart_order/:id', to: 'cart_orders#destroy', :as => :cart_order, via: :delete
+  
   
   # The priority is based upon order of creation:
   # first created -> highest priority.
