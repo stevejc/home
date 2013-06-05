@@ -9,8 +9,8 @@ class LineItemsController < ApplicationController
     @line_item.item = item
     @line_item.shop_id = @line_item.item.shop_id
     @line_item.quantity = params[:line_item][:quantity]
-    if @cart.cart_orders.where('shop_id = ?', item.shop_id)
-      @line_item.cart_order_id = @cart.cart_orders.where('shop_id = ?', item.shop_id).first.id
+    if @cart.cart_orders.where('shop_id = ?', item.shop_id).any?
+      @line_item.cart_order_id = @cart.cart_orders.where('shop_id = ?', item.shop_id).first.id 
 else
   @cart_order = CartOrder.create(cart_id: @cart.id, shop_id: @line_item.shop_id)
     end

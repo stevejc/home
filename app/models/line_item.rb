@@ -20,10 +20,18 @@ class LineItem < ActiveRecord::Base
   belongs_to :cart
   belongs_to :order
   has_one :shop, :through => :item
-  has_one :cart_order
+  belongs_to :cart_order
+  
+  before_destroy :delete_empty_cart_order
   
   def total_price
     item.price * quantity
+  end
+  
+  def delete_empty_cart_order
+    if self.cart_order.line_items.count <= 1
+      self.cart_order.destroy
+    end
   end
   
 end
