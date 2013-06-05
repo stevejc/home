@@ -1,6 +1,5 @@
-<h1>Cart</h1>
-
 <h2>Your Cart</h2>
+<%= link_to 'Keep Shopping', root_path, :class => 'btn' %>
 
 <% @cart.cart_orders.each do |cart_order| %>
   <p>Your order with: <%= cart_order.shop.name %></p>
