@@ -1,0 +1,10 @@
+<%= form_for(@lineitem) do |f| %>
+  <%= f.label :quantity, "How many?" %>
+  <%= f.text_field :quantity, :class => "input-mini" %>
+  <%= hidden_field_tag(:item, @item.id) %>
+  <%= link_to 'Ask a question', about_path, :class => 'btn' %>
+  <div>You can add details in the next step</div>
+  <%= button_tag(type: 'submit', class: "btn btn-warning") do %>
+   <i class="icon-shopping-cart"></i> Add to Cart
+  <% end %>
+<% end %>

@@ -19,9 +19,8 @@
     <div class="item-order">
       <h4><%= number_to_currency(@item.price) %></h4>
       <%= format_quantity(@item.quantity) %><br/>
-      <%= link_to 'Ask a question', about_path, :class => 'btn' %>
-      <div>You can add details in the next step</div>
-      <%= link_to (content_tag(:i, "", :class=>"icon-shopping-cart")) + ' Add to Cart', line_items_path(item_id: @item), :method => :post, :class => 'btn btn-success place-order' %>
+      <%= render "quantity" %>
+      
     </div>
     <div class="item-shop">
       <div>

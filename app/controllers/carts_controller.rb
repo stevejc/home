@@ -3,6 +3,8 @@ class CartsController < ApplicationController
   def show
     begin
       @cart = Cart.find(params[:id])
+      @cart_orders = @cart.cart_orders
+            
     rescue ActiveRecord::RecordNotFound
       logger.error "Attempt to access invalid cart #{params[:id]}"
       redirect_to root_url, notice: 'Invalid cart'

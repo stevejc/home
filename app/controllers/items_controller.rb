@@ -25,6 +25,7 @@ class ItemsController < ApplicationController
   
   def show
     @item = Item.find(params[:id])
+    @lineitem = LineItem.new
   end
   
   def youritem

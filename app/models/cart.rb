@@ -9,6 +9,7 @@
 
 class Cart < ActiveRecord::Base
   has_many :line_items, dependent: :destroy
+  has_many :cart_orders, dependent: :destroy
   
   def add_item(item_id)
     current_item = line_items.find_by_item_id(item_id)

@@ -2,10 +2,18 @@ class LineItemsController < ApplicationController
   
   def create
     @cart = current_cart
-    item = Item.find(params[:item_id])
+    item = Item.find(params[:item])
+
+    
     @line_item = @cart.add_item(item.id)
     @line_item.item = item
     @line_item.shop_id = @line_item.item.shop_id
+    @line_item.quantity = params[:line_item][:quantity]
+    if @cart.cart_orders.where('shop_id = ?', item.shop_id)
+      @line_item.cart_order_id = @cart.cart_orders.where('shop_id = ?', item.shop_id).first.id
+else
+  @cart_order = CartOrder.create(cart_id: @cart.id, shop_id: @line_item.shop_id)
+    end
 
     respond_to do |format|
       if @line_item.save
@@ -14,6 +22,7 @@ class LineItemsController < ApplicationController
         format.json { render json: @line_item,
           status: :created, location: @line_item }
       else
+        raise "did not save".inspect
         format.html { render action: "new" }
         format.json { render json: @line_item.errors,
           status: :unprocessable_entity }

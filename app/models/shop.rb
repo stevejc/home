@@ -17,6 +17,7 @@
 class Shop < ActiveRecord::Base
   attr_accessible :about, :city, :name, :refund, :state, :zip
   belongs_to :user
+  has_many :cart_orders, dependent: :destroy
   has_many :items
   has_many :line_items, :through => :items
   has_many :orders, :through => :line_items
