@@ -22,7 +22,7 @@ class LineItem < ActiveRecord::Base
   has_one :shop, :through => :item
   belongs_to :cart_order
   
-  before_destroy :delete_empty_cart_order
+  #before_destroy :delete_empty_cart_order
   
   def total_price
     item.price * quantity

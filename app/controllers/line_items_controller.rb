@@ -33,7 +33,9 @@ class LineItemsController < ApplicationController
   
   def destroy
     @line_item = LineItem.find(params[:id])
+    @cart_order = CartOrder.find(@line_item.cart_order_id)
     @line_item.destroy
+    @cart_order.destroy if @cart_order.line_items.size == 0
 
     respond_to do |format|
       format.html { redirect_to root_url, notice: "The #{@line_item.item.title} has been removed from your cart" }

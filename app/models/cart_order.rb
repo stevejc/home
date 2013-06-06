@@ -12,7 +12,7 @@
 class CartOrder < ActiveRecord::Base
   attr_accessible :cart_id, :shop_id
   
-  has_many :line_items
+  has_many :line_items, dependent: :destroy
   belongs_to :shop
   belongs_to :cart
   
