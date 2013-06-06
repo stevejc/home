@@ -21,6 +21,13 @@
       <%= (@order.created_at).strftime("%m/%d/%Y") %>
     </td>
   </tr>
+  
+  <tr>
+    <td><b>Status:</b></td>
+    <td>
+      <%= @order.status %>
+    </td>
+  </tr>
 
 </table>
 

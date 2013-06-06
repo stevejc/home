@@ -25,7 +25,7 @@ class Order < ActiveRecord::Base
   
   validates :name, :address, presence: true
   
-  after_create :update_prices, :update_available_quantities
+  after_create :update_prices, :update_available_quantities, :update_status
   
   def add_line_items_from_cart(cart_order)
     cart_order.line_items.each do |item|
@@ -50,6 +50,11 @@ class Order < ActiveRecord::Base
   
   def total_price
     line_items.to_a.sum { |item| item.total_price }
+  end
+  
+  def update_status
+    self.status = "Order Submitted"
+    self.save
   end
   
 end
