@@ -2,9 +2,9 @@ class OrdersController < ApplicationController
   before_filter :signed_in_user
   
   def new
-    @cart = current_cart
-    if @cart.line_items.empty?
-      redirect_to root_url, notice: "Your cart is empty"
+    @cart_order = CartOrder.find(params[:cart_order_id])
+    if @cart_order.line_items.empty?
+      redirect_to root_url, notice: "Your order is empty"
       return
     end
     @order = Order.new
@@ -13,9 +13,9 @@ class OrdersController < ApplicationController
   end
   
   def pay
-    @cart = current_cart
-    if @cart.line_items.empty?
-      redirect_to root_url, notice: "Your cart is empty"
+    @cart_order = CartOrder.find(params[:cart_order_id])
+    if @cart_order.line_items.empty?
+      redirect_to root_url, notice: "Your order is empty"
       return
     end
     @order = Order.new
@@ -24,15 +24,15 @@ class OrdersController < ApplicationController
   end
   
   def create
+    @cart_order = CartOrder.find(params[:cart_order_id])
     @order = Order.new(params[:order])
-    @order.add_line_items_from_cart(current_cart)
+    @order.add_line_items_from_cart(@cart_order)
     @order.user_id = current_user.id
-    @order.shop_id = current_cart.line_items.first.item.shop_id
+    @order.shop_id = @cart_order.shop_id
     @shippingaddress = ShippingAddress.find(@order.shipping_address_id)
     
     if @order.save
-      Cart.destroy(session[:cart_id])
-      session[:cart_id]= nil
+      @cart_order.destroy
       redirect_to root_url, notice: 'Thank you for your order.'
     else
       @cart = current_cart

@@ -27,8 +27,8 @@ class Order < ActiveRecord::Base
   
   after_create :update_prices, :update_available_quantities
   
-  def add_line_items_from_cart(cart)
-    cart.line_items.each do |item|
+  def add_line_items_from_cart(cart_order)
+    cart_order.line_items.each do |item|
       item.cart_id = nil
       line_items << item
     end

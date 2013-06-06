@@ -10,7 +10,7 @@
     <%= address.city + ", " + address.state + "  " + address.zip %><br/>
   </div>
   
-  <%= link_to "Ship to this address", pay_path(:address_id => address.id), :class => "btn btn-warning" %><br/>
+  <%= link_to "Ship to this address", pay_path(:address_id => address.id, :cart_order_id => @cart_order), :class => "btn btn-warning" %><br/>
   <%= link_to 'Edit', @cart, :class => 'btn' %>  
   <%= link_to 'Delete', @cart, :class => 'btn' %>
 <% end %>
