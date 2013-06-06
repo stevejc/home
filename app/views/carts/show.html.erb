@@ -1,4 +1,5 @@
 <h2>Your Cart</h2>
+<% if @cart_orders.any? %>
 <%= link_to 'Keep Shopping', root_path, :class => 'btn' %><br><br>
 
 <% @cart.cart_orders.each do |cart_order| %>
@@ -29,3 +30,6 @@
 <br>
 
 <%= link_to 'Empty cart', @cart, method: :delete, data: {confirm: "Are you sure?" }, :class => 'btn' %>
+<% else %>
+Empty Cart
+<% end %>

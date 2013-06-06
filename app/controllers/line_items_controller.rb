@@ -11,10 +11,11 @@ class LineItemsController < ApplicationController
     @line_item.quantity = params[:line_item][:quantity]
     if @cart.cart_orders.where('shop_id = ?', item.shop_id).any?
       @line_item.cart_order_id = @cart.cart_orders.where('shop_id = ?', item.shop_id).first.id 
-else
-  @cart_order = CartOrder.create(cart_id: @cart.id, shop_id: @line_item.shop_id)
+    else
+      @cart_order = CartOrder.create(cart_id: @cart.id, shop_id: @line_item.shop_id)
+      @line_item.cart_order_id = @cart_order.id
     end
-
+    
     respond_to do |format|
       if @line_item.save
         format.html { redirect_to @line_item.cart,
