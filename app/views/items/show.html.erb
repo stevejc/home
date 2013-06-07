@@ -7,14 +7,19 @@
     <div class="item-header">
       <h3><%= @item.title %></h3>
     </div>
-    <div class="item-images">
-      <%= image_tag(@item.itemimage.first.image) if @item.itemimage.present? %>
+    <div class="item-images" id="full">
+      <ul>
+        <% @item.itemimage.each do |picture| %>
+          <li id="image<%= picture.id %>"><%= image_tag(picture.image) %></li>
+        <% end %>
+      </ul>
     </div>
-    <div>
-    <br>
+    <div id="thumbnails">
+    <ul>
     <% @item.itemimage.each do |picture| %>
-        <%= image_tag(picture.image, width: "62", height: "62") if picture.image.present? %>
+        <li><a href="#image<%= picture.id %>"><%= image_tag(picture.image, width: "62", height: "62") if picture.image.present? %></a></li>
     <% end %>
+    </ul>
     </div>
     <div class="item-description">
       <h4>What's included in my order?</h4>
