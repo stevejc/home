@@ -81,6 +81,8 @@ class OrdersController < ApplicationController
   def updateshipping
     @order = Order.find(params[:id])
     if @order.update_attributes(params[:order])
+      @order.status = "Order Shipped"
+      @order.save
       redirect_to yourorder_path(@order), notice: 'Your shipping information was successfully updated.'
     else
       render :shipment_details
