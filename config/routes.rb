@@ -7,6 +7,7 @@ Home::Application.routes.draw do
   resources :carts
   resources :orders
   resources :shipping_addresses
+  resources :itemimages
   
   root to: 'home#index'
   

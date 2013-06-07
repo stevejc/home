@@ -8,7 +8,13 @@
       <h3><%= @item.title %></h3>
     </div>
     <div class="item-images">
-      <%= image_tag(@item.itemimage.image) if @item.itemimage.present? %>
+      <%= image_tag(@item.itemimage.first.image) if @item.itemimage.present? %>
+    </div>
+    <div>
+    <br>
+    <% @item.itemimage.each do |picture| %>
+        <%= image_tag(picture.image, width: "62", height: "62") if picture.image.present? %>
+    <% end %>
     </div>
     <div class="item-description">
       <h4>What's included in my order?</h4>

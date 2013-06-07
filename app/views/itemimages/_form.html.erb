@@ -1,0 +1,10 @@
+<%= form_for @itemimage, :html => {:multipart => true} do |f| %>
+
+  <%= f.hidden_field :item_id %>
+
+  <p>
+    <%= f.file_field :image %>
+  </p>
+
+  <p><%= f.submit %></p>
+<% end %>
