@@ -44,22 +44,21 @@ class OrdersController < ApplicationController
     @orders = current_user.shop.orders
   end
   
-  def yourorders
-    @orders = current_user.orders
-    
-  end
-  
-  def show
-    @order = Order.find(params[:id])
-    @shippingaddress = ShippingAddress.find(@order.shipping_address_id)
-  end
-  
-  def yourorder
+  def yourshoporder
     @order = Order.find(params[:id])
     @shippingaddress = ShippingAddress.find(@order.shipping_address_id)
     redirect_to orders_path if @order.shop_id != current_user.shop.id
   end
   
+  def yourorders
+    @orders = current_user.orders 
+  end
+  
+  def yourorder
+    @order = current_user.orders.find(params[:id])
+    @shippingaddress = ShippingAddress.find(@order.shipping_address_id)
+  end
+   
   def edit
     @order = Order.find(params[:id])
   end
@@ -88,7 +87,5 @@ class OrdersController < ApplicationController
       render :shipment_details
     end
   end
-  
-
   
 end

@@ -14,9 +14,9 @@
 
 <% @orders.each do |order| %>
   <% if status == "Store" %>
-    <tr data-link="<%= yourorder_path(order) %>">
+    <tr data-link="<%= yourshoporder_path(order) %>">
   <% else %>
-    <tr data-link="<%= order_path(order) %>">
+    <tr data-link="<%= yourorder_path(order) %>">
   <% end %>
     <td><%= order.name %></td>
     <td><%= order.address %></td>

@@ -1,5 +1,6 @@
 class ShopsController < ApplicationController
   before_filter :signed_in_user, except: [:show]
+  before_filter :correct_user, except: [:show]
   
   def new
     @shop = Shop.new

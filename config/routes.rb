@@ -24,6 +24,7 @@ Home::Application.routes.draw do
   match '/youritems' => 'items#youritems'
   match '/yourshoporders' => 'orders#yourshoporders'
   match '/yourorders' => 'orders#yourorders'
+  match '/yourshoporder/:id' => 'orders#yourshoporder', :as => :yourshoporder
   match '/yourorder/:id' => 'orders#yourorder', :as => :yourorder
   match '/pay' => 'orders#pay'
   match '/shipmentdetails/:id/edit' => 'orders#shipment_details', :as => :edit_shipment
