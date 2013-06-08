@@ -66,38 +66,7 @@
    
 </table>
 
-<h3>Shipping Information </h3>
-
-<table class="table">
-  <tr>
-    <td><b>Carrier:</b></td>
-    <td>
-      <%= @order.carrier %>
-    </td>
-  </tr> 
-
-  <tr>
-    <td><b>Tracking #:</b></td>
-    <td>
-      <%= @order.tracking_number %>
-    </td>
-  </tr>
-  
-  <tr>
-    <td><b>Ship Date:</b></td>
-    <td>
-      <%= (@order.ship_date).strftime("%m/%d/%Y") if @order.ship_date? %>
-    </td>
-  </tr>
-  
-  <tr>
-    <td><b>Status:</b></td>
-    <td>
-      <%= @order.status %>
-    </td>
-  </tr>
-  
-</table>
+<%= render "display_shipping_information" %>
 
 <%= link_to 'Edit', edit_order_path(@order), :class => 'btn' %>
 <%= link_to 'Back', :back, :class => 'btn' %>

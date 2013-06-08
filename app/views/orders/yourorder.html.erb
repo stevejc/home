@@ -76,4 +76,8 @@
    
 </table>
 
+<% if @order.status == "Order Shipped" %>
+  <%= render "display_shipping_information" %>
+<% end %>
+
 <%= link_to 'Back', :back, :class => 'btn' %>
