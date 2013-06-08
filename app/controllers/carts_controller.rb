@@ -2,7 +2,7 @@ class CartsController < ApplicationController
   
   def show
     begin
-      @cart = Cart.find(params[:id])
+      @cart = current_cart
       @cart_orders = @cart.cart_orders
             
     rescue ActiveRecord::RecordNotFound
