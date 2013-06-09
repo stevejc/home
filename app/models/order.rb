@@ -20,7 +20,7 @@ class Order < ActiveRecord::Base
   attr_accessible :name, :address, :carrier, :tracking_number, :ship_date, :shipping_address_id
   has_many :line_items, dependent: :destroy
   has_one :user
-  has_one :shop
+  belongs_to :shop
   has_one :shipping_address
   
   validates :name, :address, presence: true

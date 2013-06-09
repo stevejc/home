@@ -20,7 +20,7 @@ class Shop < ActiveRecord::Base
   has_many :cart_orders, dependent: :destroy
   has_many :items
   has_many :line_items, :through => :items
-  has_many :orders, :through => :line_items
+  has_many :orders
   
   validates :user_id,  presence: true
   validates :name, presence: true, length: { maximum: 140 }
