@@ -18,7 +18,7 @@
   <tr>
     <td><b>Ship Date:</b></td>
     <td>
-      <%= (@order.ship_date).strftime("%m/%d/%Y") if @order.ship_date? %>
+      <%= @order.ship_date if @order.ship_date? %>
     </td>
   </tr>
   
