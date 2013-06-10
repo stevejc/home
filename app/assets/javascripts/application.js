@@ -15,6 +15,7 @@
 //= require twitter/bootstrap
 //= require_tree .
 
+
 jQuery(function($) {
 
 // makes tr's clickable
@@ -23,3 +24,10 @@ $("tr[data-link]").click(function() {
 });
 
 })
+
+$(function () {
+	$('.blog').popover({ 
+html: true
+  })
+
+});
