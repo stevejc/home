@@ -15,7 +15,7 @@
 class Item < ActiveRecord::Base
   attr_accessible :description, :price, :quantity, :title
   belongs_to :shop
-  has_many :itemimage
+  has_many :itemimages
   has_many :line_items
   
   before_destroy :ensure_not_referenced_by_any_line_item

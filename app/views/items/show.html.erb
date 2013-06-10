@@ -9,14 +9,14 @@
     </div>
     <div class="item-images" id="full">
       <ul>
-        <% @item.itemimage.each do |picture| %>
+        <% @item.itemimages.each do |picture| %>
           <li id="image<%= picture.id %>"><%= image_tag(picture.image) %></li>
         <% end %>
       </ul>
     </div>
     <div id="thumbnails">
     <ul>
-    <% @item.itemimage.each do |picture| %>
+    <% @item.itemimages.each do |picture| %>
         <li><a href="#image<%= picture.id %>"><%= image_tag(picture.image, width: "62", height: "62") if picture.image.present? %></a></li>
     <% end %>
     </ul>
