@@ -17,6 +17,7 @@ class ItemsController < ApplicationController
   
   def index
     @items = Item.all
+    @favorites = current_user.favorite_items
   end
   
   def youritems

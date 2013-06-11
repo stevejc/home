@@ -31,6 +31,7 @@
       <h4><%= number_to_currency(@item.price) %></h4>
       <%= format_quantity(@item.quantity) %><br/>
       <%= render "quantity" %>
+      <%= link_to (content_tag(:i, "", :class=>"icon-heart") + " Favorite"), favorite_items_path(:id => @item.id), :method=> :post, :class => 'btn favorite' %>
       
     </div>
     <div class="item-shop">

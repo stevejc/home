@@ -8,6 +8,7 @@ Home::Application.routes.draw do
   resources :orders
   resources :shipping_addresses
   resources :itemimages
+  resources :favorite_items
   
   root to: 'home#index'
   
@@ -32,6 +33,8 @@ Home::Application.routes.draw do
   match '/shipmentdetails/:id' => 'orders#updateshipping', :as => :shipment, via: :put
   
   match '/cart_order/:id', to: 'cart_orders#destroy', :as => :cart_order, via: :delete
+  match '/yourfavorites' => 'favorite_items#yourfavorites', :as => :yourfavorites
+  
   
   
   # The priority is based upon order of creation:

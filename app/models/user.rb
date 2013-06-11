@@ -19,6 +19,7 @@ class User < ActiveRecord::Base
   has_many :items, :through => :shop
   has_many :orders
   has_many :shipping_addresses
+  has_many :favorite_items
   
   before_save { self.email.downcase! }
   before_save :create_remember_token

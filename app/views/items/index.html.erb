@@ -1,23 +1,25 @@
 <h1>Items Index</h1>
 
 <% @items.in_groups_of(4,false) do |row_items| %>
-<div class="row-fluid">
-
-<ul class="thumbnails">
-<% for item in row_items %>
-  <li class="span3 item-listing">
-    <div class="image_box">
-      <%= link_to image_tag(item.itemimages.first.image, :border => 0), item_path(item) if item.itemimages.present? %>
-      <div class="hide_link"><%= link_to (content_tag(:i, "", :class=>"icon-heart")), root_path, :class => 'favorite_link', :title => "Add item to your favs" %></div>
-    </div>
-    <div><%= link_to item.title, item_path(item) %></div>
-    <%= link_to item.shop.name, shop_path(item.shop) %>   
-    <span class="right"><%= number_to_currency(item.price) %></span>
-    
-  </li>
-<% end %>
-</ul>
-</div>
+  <div class="row-fluid">
+    <ul class="thumbnails">
+      <% for item in row_items %>
+        <li class="span3 item-listing">
+          <div class="image_box">
+            <%= link_to image_tag(item.itemimages.first.image, :border => 0), item_path(item) if item.itemimages.present? %>      
+            <div class="hide_link">
+              <% if !item.my_favorite?(current_user.id) %>          
+                <%= link_to (content_tag(:i, "", :class=>"icon-heart")), favorite_items_path(:id => item.id), :method=> :post, :class => 'favorite_link', :title => "Add item to your favs" %>
+              <% end %>
+            </div>      
+          </div>
+          <div><%= link_to item.title, item_path(item) %></div>
+          <%= link_to item.shop.name, shop_path(item.shop) %>   
+          <span class="right"><%= number_to_currency(item.price) %></span>   
+        </li>
+      <% end %>
+    </ul>
+  </div>
 <% end %>
 
 

@@ -17,11 +17,16 @@ class Item < ActiveRecord::Base
   belongs_to :shop
   has_many :itemimages
   has_many :line_items
+  has_many :favorite_items
   
   before_destroy :ensure_not_referenced_by_any_line_item
   
   validates :shop_id,  presence: true
   validates :title, :description, :price, presence: true
+  
+  def my_favorite?(user)
+    FavoriteItem.where('item_id = ?', self.id).exists?  
+  end
   
   private
   
