@@ -1,6 +1,5 @@
 class ShopsController < ApplicationController
   before_filter :signed_in_user, except: [:show]
-  before_filter :correct_user, except: [:show]
   
   def new
     @shop = Shop.new
@@ -25,11 +24,11 @@ class ShopsController < ApplicationController
   end
   
   def edit
-    @shop = Shop.find(params[:id])
+    @shop = current_user.shop
   end
   
   def update
-    @shop = Shop.find(params[:id])
+    @shop = current_user.shop
     if @shop.update_attributes(params[:shop])
       redirect_to yourshop_path, notice: 'Your shop was successfully updated.'
     else
@@ -39,9 +38,6 @@ class ShopsController < ApplicationController
   
   def index
     @shops = Shop.all
-  end
-  
-  def destroy
   end
   
 end

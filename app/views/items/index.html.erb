@@ -6,10 +6,14 @@
 <ul class="thumbnails">
 <% for item in row_items %>
   <li class="span3 item-listing">
-    <%= link_to image_tag(item.itemimages.first.image, :border => 0), item_path(item) if item.itemimages.present? %>
+    <div class="image_box">
+      <%= link_to image_tag(item.itemimages.first.image, :border => 0), item_path(item) if item.itemimages.present? %>
+      <div class="hide_link"><%= link_to (content_tag(:i, "", :class=>"icon-heart")), root_path, :class => 'favorite_link', :title => "Add item to your favs" %></div>
+    </div>
     <div><%= link_to item.title, item_path(item) %></div>
     <%= link_to item.shop.name, shop_path(item.shop) %>   
     <span class="right"><%= number_to_currency(item.price) %></span>
+    
   </li>
 <% end %>
 </ul>

@@ -16,3 +16,30 @@
 	display: inline;
 	}
 }
+
+.image_box {
+	position:relative;
+}
+
+.favorite_image {
+display:none;
+}
+
+.hide_link {
+	position: absolute;
+	top: 12px;
+	left:10px;
+	background: white;
+	border-radius: 12px;
+			
+}
+
+.hide_link_hover {
+	background: grey;
+}
+
+a.favorite_link {
+	color: red;
+	display: none;
+	text-decoration: none;
+}
