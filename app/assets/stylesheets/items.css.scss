@@ -6,6 +6,8 @@
 }
 
 #thumbnails {
+	margin: 10px 0 0 0;
+	
 	ul {
 		list-style-type: none;
 		display: inline;
@@ -47,3 +49,31 @@ a.favorite_link {
 .favorite i {
 color: red;
 }
+
+.thumb img {
+	width: 62px;
+	height: 62px;
+	background-size: cover;
+}
+
+div #item_header {
+	padding-bottom: 20px;
+	
+	a {
+	margin-top: 10px;
+	}
+}
+
+#item_header h1 {
+		display: inline;
+}
+
+.item-header {
+	padding-left: 10px;
+	font-size: 18px;
+}
+
+.item-images ul {
+margin: 0px;
+}
+

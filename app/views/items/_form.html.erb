@@ -14,15 +14,14 @@
   <%= f.text_field :quantity %><br>
   
   
-  <div class="form-actions">
-    
+  <div class="form-actions">    
     <% if params[:action] == "edit" %>
       <%= f.submit "Save changes", class: "btn btn-warning" %>
-      <%= link_to 'Cancel', user_path(current_user), :class => 'btn' %>
     <% else %>
       <%= f.submit "Add Item", class: "btn btn-warning" %>
-      <%= link_to 'Cancel', users_path(current_user), :class => 'btn' %>
     <% end %>
+    <%= link_to 'Cancel', :back, :class => 'btn' %>
   </div>
+  
 <% end %>
 

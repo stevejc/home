@@ -14,6 +14,10 @@
  *= require_tree .
  */
 
+.container {
+	max-width: 940px;
+}
+
 .buy-now h3 {
 	display: inline;
 }
@@ -69,7 +73,7 @@
 
 .layout-main {
 	width: 68%;
-	height: 1000px;
+
 	max-width: 660px;
 	border: solid lightgrey 1px;
 	display: inline;
@@ -105,6 +109,12 @@
 #red:hover {
 
 }
+
+
+
+
+
+
 
 
 

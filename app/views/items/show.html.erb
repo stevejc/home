@@ -1,6 +1,7 @@
-<h1>Shop Item</h1>
-
-<%= link_to 'Back', items_path, :class => 'btn' %>
+<div id="item_header">
+  <h1>Shop Item</h1>
+  <%= link_to 'Back', items_path, :class => 'btn right' %>
+</div>
 
 <div class="clearfix">
   <div class="layout-main">
@@ -17,7 +18,7 @@
     <div id="thumbnails">
     <ul>
     <% @item.itemimages.each do |picture| %>
-        <li><a href="#image<%= picture.id %>"><%= image_tag(picture.image, width: "62", height: "62") if picture.image.present? %></a></li>
+        <li class="thumb"><a href="#image<%= picture.id %>"><%= image_tag(picture.image) if picture.image.present? %></a></li>
     <% end %>
     </ul>
     </div>
@@ -32,6 +33,7 @@
       <%= format_quantity(@item.quantity) %><br/>
       <%= render "quantity" %>
       <%= link_to (content_tag(:i, "", :class=>"icon-heart") + " Favorite"), favorite_items_path(:id => @item.id), :method=> :post, :class => 'btn favorite' %>
+      <%= display_loves(@item.favorite_items.size) %>
       
     </div>
     <div class="item-shop">

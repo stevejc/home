@@ -25,7 +25,7 @@ class Item < ActiveRecord::Base
   validates :title, :description, :price, presence: true
   
   def my_favorite?(user)
-    FavoriteItem.where('item_id = ?', self.id).exists?  
+    FavoriteItem.where('item_id = ? AND user_id = ?', self.id, user).exists?  
   end
   
   private

@@ -12,9 +12,7 @@
           </div>
           <div><%= link_to fav.item.title, item_path(fav.item) %></div>
           <%= link_to fav.item.shop.name, shop_path(fav.item.shop) %>   
-          <span class="right"><%= number_to_currency(fav.item.price) %></span>
-          
-          <%= link_to "Remove as Fav", fav, :confirm => 'Are you sure?', :method => :delete %>
+          <span class="right"><%= number_to_currency(fav.item.price) %></span>          
         </li>
       <% end %>
     </ul>

@@ -2,7 +2,6 @@ class ItemsController < ApplicationController
   
   def new
     @item = Item.new
-    @item.build_itemimage
   end
   
   def create
