@@ -18,7 +18,6 @@ Home::Application.routes.draw do
   match '/home' => 'home#index'
   match '/about' => 'home#about'
   match '/contact_us' => 'home#contact_us'
-  match '/lighting' => 'home#lighting'
   match '/yourshop' => 'shops#yourshop'
   match '/yourshop/edit' => 'shops#edit', :as => :edit_yourshop
   match '/yourcart' => 'carts#show'

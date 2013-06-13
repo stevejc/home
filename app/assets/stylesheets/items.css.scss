@@ -1,8 +1,94 @@
-.item-images {
-	ul {
-		list-style-type: none;
-		display: inline;
+// General Items Styling
+#layout-main, #item-order, #item-shop, .item-listing, #item-favorite {
+		border: solid #e4e4e2 1px;
+		border-radius: 3px;
+		box-shadow: 0 0 2px 0 rgba(0,0,0,.1);
+}
+
+#item-order, #item-favorite, #item-shop {
+	margin-bottom: 10px;
+	padding: 15px 20px;
+}
+
+.thumb img {
+	width: 62px;
+	height: 62px;
+	background-size: cover;
+}
+
+//Items Index
+.item-listing {
+	padding: 4px;
+	
+	img {
+		border-radius: 3px 3px 0 0;
 	}
+}
+
+.image_box {
+	position:relative;
+}
+
+.hide_link {
+	position: absolute;
+	top: 12px;
+	left:10px;
+	background: white;
+	border-radius: 12px;			
+}
+
+.hide_link_hover {
+	background: grey;
+}
+
+.favorite_image {
+display:none;
+}
+
+a.favorite_link {
+	color: red;
+	display: none;
+	text-decoration: none;
+}
+
+.favorite i {
+color: red;
+}
+
+//Items Show
+//Items Show Header
+#item_header {
+	padding-bottom: 20px;
+	
+	a {
+	margin-top: 10px;
+	}
+	
+	h1 {
+			display: inline;
+	}
+}
+
+//Items Show Main
+#layout-main {
+	width: 68%;
+	max-width: 660px;
+	display: inline;
+	float:left;
+}
+
+.item-header {
+	padding-left: 10px;
+	
+	h3 {
+	font-size: 30px;
+	}
+}
+
+.item-images ul {
+	list-style-type: none;
+	display: inline;
+	margin: 0px;
 }
 
 #thumbnails {
@@ -19,61 +105,39 @@
 	}
 }
 
-.image_box {
-	position:relative;
+//Items Show Right
+#layout-right {
+	width: 31%;
+	max-width: 300px;
+	float: right;
 }
 
-.favorite_image {
-display:none;
-}
-
-.hide_link {
-	position: absolute;
-	top: 12px;
-	left:10px;
-	background: white;
-	border-radius: 12px;
-			
-}
-
-.hide_link_hover {
-	background: grey;
-}
-
-a.favorite_link {
-	color: red;
-	display: none;
-	text-decoration: none;
-}
-
-.favorite i {
-color: red;
-}
-
-.thumb img {
-	width: 62px;
-	height: 62px;
-	background-size: cover;
-}
-
-div #item_header {
-	padding-bottom: 20px;
+#item-order {
+	padding: 15px 20px;
 	
-	a {
-	margin-top: 10px;
+	#price_available {
+		padding-bottom: 10px;
+	}
+	
+	h4{
+	display: inline;
+	}
+	
+	label {
+		display:inline;
+	}
+	
+	#question {
+		padding-top: 10px;
+		border-top: dashed lightgrey 1px;
+
+		p {
+			display: inline;
+			padding-right: 10px;
+		}
 	}
 }
 
-#item_header h1 {
-		display: inline;
+#item-shop h4 {
+	margin-top: 0px;
 }
-
-.item-header {
-	padding-left: 10px;
-	font-size: 18px;
-}
-
-.item-images ul {
-margin: 0px;
-}
-

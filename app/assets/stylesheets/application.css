@@ -27,88 +27,10 @@
 	margin-top: 7px;
 }
 
-.listing-row-image {
-	display: block;
-	float: left;
-	width: 178px;
-}
-
-.listing-row-item {
-	float: left;
-	overflow: hidden;
-	width: 360px;
-	height: 120px;
-	margin: 0px;
-	padding: 0px;
-	background: yellow;
-}
-
-.listing-row-title {
-	font-size: 18px;
-	font-weight: 600;
-	color: #4383c5;
-	
-}
-
-.listing-row-seller {
-	float: left;
-	overflow: hidden;
-	width: 360px;
-	height: 67px;
-	margin: 0px;
-	padding: 0px;
-	background: yellow;
-}
-
-.listing-row-price {
-	font-weight: 600;
-	font-size: 32px;
-	color: #383834;
-	line-height: 28px;
-}
-
-.layout-main, .item-order, .item-shop {
-		border: solid lightgrey 1px;
-}
-
-.layout-main {
-	width: 68%;
-
-	max-width: 660px;
-	border: solid lightgrey 1px;
-	display: inline;
-	float:left;
-}
-
-.layout-right {
-	width: 31%;
-	max-width: 300px;
-	float: right;
-}
-
-.item-order {
-	border: solid lightgrey 1px;
-	background-color: rgba(0,0,0,0.05)
-}
-
 .right {
 	float: right;
 }
 
-.item-listing {
-	border: 1px solid #e4e4e2;
-	padding: 4px;
-	border-radius: 3px;
-	box-shadow: 0 0 2px 0 rgba(0,0,0,.1);
-}
-
-.item-listing img {
-	border-radius: 3px 3px 0 0;
-}
-
-#red:hover {
-
-}
 
 
 
