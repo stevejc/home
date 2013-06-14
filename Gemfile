@@ -14,6 +14,9 @@ gem 'pg'
 group :development, :test do
   gem 'annotate'
   gem 'foreman'
+  gem 'better_errors'
+  gem 'binding_of_caller'
+  gem 'meta_request'
 end
 
 # Gems used only for assets and not required
