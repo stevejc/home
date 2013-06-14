@@ -5,6 +5,11 @@ class SessionsController < ApplicationController
   def create
     user = User.find_by_email(params[:session][:email].downcase)
     if user && user.authenticate(params[:session][:password])
+      if params[:remember_me]
+        cookies.permanent[:remember_token] = user.remember_token
+      else
+        cookies[:remember_token] = user.remember_token
+      end 
       sign_in user
       flash[:notice] = "Welcome back to Home!"
       redirect_back_or root_url
@@ -17,7 +22,7 @@ class SessionsController < ApplicationController
   def destroy
     sign_out
     flash[:notice] = "You have successfully logged out"
-    redirect_to root_url
+    redirect_to signin_path
   end
   
 end

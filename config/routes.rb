@@ -9,6 +9,7 @@ Home::Application.routes.draw do
   resources :shipping_addresses
   resources :itemimages
   resources :favorite_items
+  resources :password_resets
   
   root to: 'home#index'
   

@@ -12,8 +12,9 @@ class UsersController < ApplicationController
   def create
     @user = User.new(params[:user])
     if @user.save
+      cookies[:remember_token] = @user.remember_token
       sign_in @user
-      redirect_to @user, success: "Welcome to Home"
+      redirect_to root_url, success: "Welcome to Home"
     else
       render 'new'
     end
