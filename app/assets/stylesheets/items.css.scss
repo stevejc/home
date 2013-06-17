@@ -1,11 +1,11 @@
 // General Items Styling
-#layout-main, #item-order, #item-shop, .item-listing, #item-favorite {
+#layout-main, #item-order, #item-shop, .item-listing, #item-favorite, #item-shop-other-items {
 		border: solid #e4e4e2 1px;
 		border-radius: 3px;
 		box-shadow: 0 0 2px 0 rgba(0,0,0,.1);
 }
 
-#item-order, #item-favorite, #item-shop {
+#item-order, #item-favorite, #item-shop, #item-shop-other-items {
 	margin-bottom: 10px;
 	padding: 15px 20px;
 }
@@ -134,6 +134,17 @@ color: red;
 
 #item-shop h4{	
 	margin-top: 0px;
+}
+
+#item-shop-other-items {
+	ul{
+		list-style-type: none;
+		margin: 0 0 10px 0;
+
+		li{
+		margin-bottom: 10px;
+		}
+	}
 }
 
 
