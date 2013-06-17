@@ -42,7 +42,14 @@
       <%= @shop.refund %>
     </td>
   </tr>
-   
+  
+  <tr>
+    <td><b>Shop owner photo:</b></td>
+    <td>
+      <%= image_tag @shop.image.thumb, { :class=>"shop_image"} %>
+    </td>
+  </tr>
+     
 </table>
 
 <%= link_to 'Back', shops_path, :class => 'btn' %>
