@@ -17,7 +17,7 @@
     <div id="thumbnails">
       <ul>
       <% @item.itemimages.each do |picture| %>
-          <li class="thumb"><a href="#image<%= picture.id %>"><%= image_tag(picture.image) if picture.image.present? %></a></li>
+          <li class="thumb"><a href="#image<%= picture.id %>"><%= image_tag picture.image.thumb if picture.image.present? %></a></li>
       <% end %>
       </ul>
     </div>

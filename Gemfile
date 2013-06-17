@@ -10,6 +10,7 @@ gem 'carrierwave'
 gem 'fog'
 gem 'font-awesome-rails'
 gem 'pg'
+gem "mini_magick"
 
 group :development, :test do
   gem 'annotate'
