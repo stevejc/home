@@ -5,12 +5,3 @@
 <%= render 'form' %> 
 </fieldset>
 
-<div>
-  <b><%= @shippingaddress.name %></b><br/>
-  <%= @shippingaddress.id %><br/>
-  <%= @shippingaddress.address1 %><br/>
-  <% if @shippingaddress.address2? %>
-    <%= @shippingaddress.address2 %><br/>
-  <% end %>
-  <%= @shippingaddress.city + ", " + @shippingaddress.state + "  " + @shippingaddress.zip %><br/>
-</div>

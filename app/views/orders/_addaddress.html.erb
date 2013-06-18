@@ -1,5 +1,7 @@
-<%= form_for(@shippingaddress, :url => shipping_addresses_path, :html => { :method => "post" }) do |f| %>
+<%= form_for(@shippingaddress) do |f| %>
   <%= render 'shared/error_messages', object: f.object %>
+  
+  <%= hidden_field_tag(:cart_order_id, @cart_order.id) %>
   
   <%= f.label :name, "Ship to name" %>
   <%= f.text_field :name %>
