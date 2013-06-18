@@ -23,11 +23,20 @@ class UsersController < ApplicationController
   def edit
   end
   
+  def password
+    @user = current_user
+  end
+  
   def update
     if @user.update_attributes(params[:user])
       cookies[:remember_token] = @user.remember_token
       sign_in @user
-      redirect_to user_path(@user), success: "You have successfully updated your profile"
+      if params[:commit] == "Change Password"
+        flash[:notice] = "You have successfully changed your password."
+      else
+        flash[:notice] = "You have successfully updated your profile."
+      end
+      redirect_to user_path(@user)
     else
       render :edit
     end

@@ -35,6 +35,7 @@ Home::Application.routes.draw do
   match '/cart_order/:id', to: 'cart_orders#destroy', :as => :cart_order, via: :delete
   match '/yourfavorites' => 'favorite_items#yourfavorites', :as => :yourfavorites
   match '/list_for_sale/:id' => 'items#list_for_sale', :as => :list_for_sale
+  match '/password' => 'users#password', :as => :password
   
   
   
