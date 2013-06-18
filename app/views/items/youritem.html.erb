@@ -1,5 +1,11 @@
 <h1>Your Shop Item</h1>
 
+<h3>Status: <%= @item.status %></h3>
+<% if @item.status == "Pending" && @item.itemimages.exists? %>
+  <%= link_to "List Item for Sale", list_for_sale_path(@item) %>
+  <% end %>
+<p><%= display_status_update(@item) %></p>
+
 <table class="table">
   <tr>
     <td><b>Item:</b></td>
@@ -28,15 +34,9 @@
       <%= @item.quantity %>
     </td>
   </tr>
-  
-  <tr>
-    <td><b>Shop:</b></td>
-    <td>
-      <%= @item.shop.name %>
-    </td>
-  </tr>
    
 </table>
+
 <div class="row-fluid">
 <% @item.itemimages.each do |picture| %>
   <div class="span2">

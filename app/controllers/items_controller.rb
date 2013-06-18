@@ -15,7 +15,7 @@ class ItemsController < ApplicationController
   end
   
   def index
-    @items = Item .all
+    @items = Item.where('status = ?', "Available")
     @favorites = current_user.favorite_items
   end
   
@@ -25,7 +25,7 @@ class ItemsController < ApplicationController
   
   def show
     @item = Item.find(params[:id])
-    @items = @item.shop.items.where('id != ?', @item.id).limit(3)
+    @items = @item.shop.items.where('id != ? AND status = ?', @item.id, "Available").limit(3)
     @items_count = @item.shop.items.size
     @lineitem = LineItem.new
   end
@@ -47,6 +47,12 @@ class ItemsController < ApplicationController
     else
       render :edit 
     end
+  end
+  
+  def list_for_sale
+    @item = Item.find(params[:id])
+    @item.update_status_to_available
+    redirect_to youritem_path(@item), notice: 'Your item is now listed for sale.'
   end
   
 end

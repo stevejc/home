@@ -14,6 +14,8 @@ class Itemimage < ActiveRecord::Base
   attr_accessible :image, :image_order, :item_id, :remove_image
   belongs_to :item
   
+  before_destroy :update_item_status_if_no_images
+  
   validates :item_id,  presence: true
   validates :image, presence: true
   validate :limit_number_of_images
@@ -23,6 +25,13 @@ class Itemimage < ActiveRecord::Base
   def limit_number_of_images
     if self.item.itemimages.size > 4
       errors.add(:base, "Exceeded limit of 5 images per item")
+    end
+  end
+  
+  def update_item_status_if_no_images
+    if self.item.itemimages.size == 1
+      self.item.status = "Pending"
+      self.item.save
     end
   end
   
