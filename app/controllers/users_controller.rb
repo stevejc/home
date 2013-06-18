@@ -25,6 +25,7 @@ class UsersController < ApplicationController
   
   def update
     if @user.update_attributes(params[:user])
+      cookies[:remember_token] = @user.remember_token
       sign_in @user
       redirect_to user_path(@user), success: "You have successfully updated your profile"
     else
