@@ -1,5 +1,5 @@
 // General Items Styling
-#layout-main, #item-order, #item-shop, .item-listing, #item-favorite, #item-shop-other-items {
+#layout-main, #item-order, #item-shop, .item-listing, #item-favorite, #item-shop-other-items, .image_lists {
 		border: solid #e4e4e2 1px;
 		border-radius: 3px;
 		box-shadow: 0 0 2px 0 rgba(0,0,0,.1);
@@ -147,4 +147,23 @@ color: red;
 	}
 }
 
+//Youritem View
 
+#item-image-gallary {
+	ul {
+	list-style-type: none;
+	margin: 0 0 10px 0;
+	}
+	
+	li{
+		display: inline-block;
+		margin-right: 10px;
+		width: 175px;
+	}
+	
+	.image_lists{
+padding: 10px;
+		
+	}
+
+}

@@ -13,6 +13,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require twitter/bootstrap
+//= require jquery.sortable
 //= require_tree .
 
 
@@ -29,5 +30,7 @@ $(function () {
 	$('.blog').popover({ 
 html: true
   })
+
+$('.sortable').sortable();
 
 });
