@@ -24,5 +24,7 @@ jQuery(function($){
 		$(this).removeClass("hide_link_hover");
 	})
 	
+
+	
 });
 

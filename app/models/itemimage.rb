@@ -15,6 +15,7 @@ class Itemimage < ActiveRecord::Base
   belongs_to :item
   
   before_destroy :update_item_status_if_no_images
+  before_create :add_image_order
   
   validates :item_id,  presence: true
   validates :image, presence: true
@@ -33,6 +34,10 @@ class Itemimage < ActiveRecord::Base
       self.item.status = "Pending"
       self.item.save
     end
+  end
+  
+  def add_image_order
+    self.image_order = (self.item.itemimages.size) + 1
   end
   
 end

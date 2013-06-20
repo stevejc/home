@@ -1,29 +1,26 @@
 Home::Application.routes.draw do
   resources :users
+  match '/signup' => 'users#new'
+  match '/password' => 'users#password', :as => :password
+  
   resources :sessions, only: [:new, :create, :destroy]
+  match '/signin' => 'sessions#new'
+  match '/signout' => 'sessions#destroy', via: :delete
+  
   resources :shops
-  resources :items
-  resources :line_items
-  resources :carts
-  resources :orders
-  resources :shipping_addresses
-  resources :itemimages
-  resources :favorite_items
-  resources :password_resets
-  
-  root to: 'home#index'
-  
-  match '/signup',  to: 'users#new'
-  match '/signin',  to: 'sessions#new'
-  match '/signout', to: 'sessions#destroy', via: :delete
-  match '/home' => 'home#index'
-  match '/about' => 'home#about'
-  match '/contact_us' => 'home#contact_us'
   match '/yourshop' => 'shops#yourshop'
   match '/yourshop/edit' => 'shops#edit', :as => :edit_yourshop
-  match '/yourcart' => 'carts#show'
+  
+  resources :items
   match '/youritem/:id' => 'items#youritem', :as => :youritem
   match '/youritems' => 'items#youritems'
+  match '/list_for_sale/:id' => 'items#list_for_sale', :as => :list_for_sale
+  
+  resources :line_items
+  resources :carts
+  match '/yourcart' => 'carts#show'
+    
+  resources :orders
   match '/yourshoporders' => 'orders#yourshoporders'
   match '/yourorders' => 'orders#yourorders'
   match '/yourshoporder/:id' => 'orders#yourshoporder', :as => :yourshoporder
@@ -32,13 +29,23 @@ Home::Application.routes.draw do
   match '/shipmentdetails/:id/edit' => 'orders#shipment_details', :as => :edit_shipment
   match '/shipmentdetails/:id' => 'orders#updateshipping', :as => :shipment, via: :put
   
+  resources :shipping_addresses
+  resources :itemimages do
+    collection { post :sort }
+  end
+  resources :favorite_items
+  resources :password_resets
+  
+  root to: 'home#index'
+  
+  match '/home' => 'home#index'
+  match '/about' => 'home#about'
+  match '/contact_us' => 'home#contact_us' 
   match '/cart_order/:id', to: 'cart_orders#destroy', :as => :cart_order, via: :delete
   match '/yourfavorites' => 'favorite_items#yourfavorites', :as => :yourfavorites
-  match '/list_for_sale/:id' => 'items#list_for_sale', :as => :list_for_sale
-  match '/password' => 'users#password', :as => :password
-  
-  
-  
+
+
+ 
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

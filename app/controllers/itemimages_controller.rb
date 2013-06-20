@@ -14,6 +14,13 @@ class ItemimagesController < ApplicationController
     end
   end
   
+  def sort
+    params[:picture].each_with_index do |id, index|
+      Itemimage.update_all({image_order: index+1}, {id: id})
+    end
+    render nothing: true
+  end
+  
   def destroy
     @itemimage = Itemimage.find(params[:id])
     @itemimage.destroy

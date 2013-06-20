@@ -38,20 +38,17 @@
 </table>
 
 <div id="item-image-gallary">
-<ul class="sortable">
-<% @item.itemimages.each do |picture| %>
-    <li>
-    <div class="image_lists">
-    <%= image_tag(picture.image.index) %>
-    <%= link_to "remove", picture, :confirm => 'Are you sure?', :method => :delete %></div>
-    </li>
+  <ul id="pictures" data-update-url="<%= sort_itemimages_url %>">
+    <% @item.itemimages.each do |picture| %>
+      <li id="picture_<%= picture.id %>">
+        <div class="image_lists">
+          <%= image_tag(picture.image.index) %>
+          <%= link_to "remove", picture, :confirm => 'Are you sure?', :method => :delete %>
+        </div>
+      </li>
     <% end %>
-</ul>
+  </ul>
 </div>
-
-<br>
-<br>
-<br>
 
 <% if @item.itemimages.size < 5 %>
   <%= link_to "Add an Image", new_itemimage_path(:item_id => @item), :class => 'btn' %>
