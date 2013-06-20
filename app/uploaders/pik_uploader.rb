@@ -41,8 +41,13 @@ class PikUploader < CarrierWave::Uploader::Base
   end
   
   version :index do
-    process :resize_to_fill => [170, 170]
+    process :resize_to_fill => [207, 155.25]
   end
+  
+  version :large do
+    process :resize_to_fill => [639, 479.25]
+  end
+    
 
   # Add a white list of extensions which are allowed to be uploaded.
   # For images you might use something like this:

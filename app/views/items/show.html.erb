@@ -10,7 +10,7 @@
     <div class="item-images" id="full">
       <ul>
         <% @item.itemimages.each do |picture| %>
-          <li id="image<%= picture.id %>"><%= image_tag(picture.image) %></li>
+          <li id="image<%= picture.id %>"><%= image_tag(picture.image.large) %></li>
         <% end %>
       </ul>
     </div>
