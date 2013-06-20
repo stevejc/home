@@ -16,7 +16,7 @@ class ItemsController < ApplicationController
   
   def index
     @items = Item.where('status = ?', "Available")
-    @favorites = current_user.favorite_items
+    @favorites = current_user.favorite_items if current_user
   end
   
   def youritems

@@ -8,7 +8,7 @@
           <div class="image_box">
             <%= link_to image_tag(item.itemimages.first.image, :border => 0), item_path(item) if item.itemimages.present? %>      
             <div class="hide_link">
-              <% if !item.my_favorite?(current_user.id) %>          
+              <% if current_user && !item.my_favorite?(current_user.id) %>          
                 <%= link_to (content_tag(:i, "", :class=>"icon-heart")), favorite_items_path(:id => item.id), :method=> :post, :class => 'favorite_link', :title => "Add item to your favs" %>
               <% end %>
             </div>      
