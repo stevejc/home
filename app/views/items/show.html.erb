@@ -39,7 +39,7 @@
     
     <div id="item-favorite">
       <%= link_to (content_tag(:i, "", :class=>"icon-heart") + " Favorite"), favorite_items_path(:id => @item.id), :method=> :post, :class => 'btn favorite' %>
-      <%= display_loves(@item.favorite_items.size) %>
+      <p><%= display_loves(@item.favorite_items.size) %></p>
     </div>
     
     <div id="item-shop" class="pagination-centered">
