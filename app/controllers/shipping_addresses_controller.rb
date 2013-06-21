@@ -4,7 +4,7 @@ class ShippingAddressesController < ApplicationController
     @shippingaddress = ShippingAddress.new(params[:shipping_address])
     @shippingaddress.user_id = current_user.id
     if @shippingaddress.save
-      redirect_to pay_path(:address_id => @shippingaddress.id, :cart_order_id => params[:cart_order_id]), notice: "You have successfully added your shipping address!"
+      redirect_to pay_path(:address_id => @shippingaddress.id, :cart_order_id => params[:cart_order_id]), success: "You have successfully added your shipping address!"
     else
       render 'orders/new'
     end
@@ -18,7 +18,7 @@ class ShippingAddressesController < ApplicationController
   def update
     @shippingaddress = current_user.shipping_addresses.find(params[:id])
     if @shippingaddress.update_attributes(params[:shipping_address])
-      redirect_to new_order_path(:cart_order_id => params[:cart_order_id]), notice: 'Your address was successfully updated.'
+      redirect_to new_order_path(:cart_order_id => params[:cart_order_id]), success: 'Your address was successfully updated.'
     else
       render :edit
     end
@@ -27,7 +27,7 @@ class ShippingAddressesController < ApplicationController
   def destroy
     @shippingaddress = current_user.shipping_addresses.find(params[:id])
     @shippingaddress.destroy
-    redirect_to new_order_path(:cart_order_id => params[:cart_order_id]), notice: 'Your address was successfully deleted.'
+    redirect_to new_order_path(:cart_order_id => params[:cart_order_id]), success: 'Your address was successfully deleted.'
   end
   
 end

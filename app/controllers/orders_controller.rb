@@ -4,7 +4,7 @@ class OrdersController < ApplicationController
   def new
     @cart_order = CartOrder.find(params[:cart_order_id])
     if @cart_order.line_items.empty?
-      redirect_to root_url, notice: "Your order is empty"
+      redirect_to root_url, success: "Your order is empty"
       return
     end
     @order = Order.new
@@ -15,7 +15,7 @@ class OrdersController < ApplicationController
   def pay
     @cart_order = CartOrder.find(params[:cart_order_id])
     if @cart_order.line_items.empty?
-      redirect_to root_url, notice: "Your order is empty"
+      redirect_to root_url, success: "Your order is empty"
       return
     end
     @order = Order.new
@@ -33,7 +33,7 @@ class OrdersController < ApplicationController
     
     if @order.save
       @cart_order.destroy
-      redirect_to root_url, notice: 'Thank you for your order.'
+      redirect_to root_url, success: 'Thank you for your order.'
     else
       @cart = current_cart
       render action: "pay"
@@ -66,7 +66,7 @@ class OrdersController < ApplicationController
   def update
     @order = Order.find(params[:id])
     if @order.update_attributes(params[:order])
-      redirect_to order_path(@order), notice: 'Your order was successfully updated.'
+      redirect_to order_path(@order), success: 'Your order was successfully updated.'
     else
       render :edit
     end
@@ -82,7 +82,7 @@ class OrdersController < ApplicationController
     if @order.update_attributes(params[:order])
       @order.status = "Order Shipped"
       @order.save
-      redirect_to yourorder_path(@order), notice: 'Your shipping information was successfully updated.'
+      redirect_to yourorder_path(@order), success: 'Your shipping information was successfully updated.'
     else
       render :shipment_details
     end

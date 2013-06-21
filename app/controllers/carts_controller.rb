@@ -7,7 +7,7 @@ class CartsController < ApplicationController
             
     rescue ActiveRecord::RecordNotFound
       logger.error "Attempt to access invalid cart #{params[:id]}"
-      redirect_to root_url, notice: 'Invalid cart'
+      redirect_to root_url, success: 'Invalid cart'
     else
       respond_to do |format|
         format.html #show.html.erb
@@ -23,7 +23,7 @@ class CartsController < ApplicationController
 
     respond_to do |format|
       format.html { redirect_to root_url,
-        notice: 'Your cart is currently empty' }
+        success: 'Your cart is currently empty' }
       format.json { head :no_content }
     end
   end

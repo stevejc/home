@@ -32,9 +32,9 @@ class UsersController < ApplicationController
       cookies[:remember_token] = @user.remember_token
       sign_in @user
       if params[:commit] == "Change Password"
-        flash[:notice] = "You have successfully changed your password."
+        flash[:success] = "You have successfully changed your password."
       else
-        flash[:notice] = "You have successfully updated your profile."
+        flash[:success] = "You have successfully updated your profile."
       end
       redirect_to user_path(@user)
     else

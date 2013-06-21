@@ -3,7 +3,7 @@ module ApplicationHelper
     case type
     when :alert
       "alert-error"
-    when :notice
+    when :success
       "alert-success"
     else
       ""
