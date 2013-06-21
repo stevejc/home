@@ -11,6 +11,14 @@
 			  <ul class="nav">
     				<li><%= link_to "About", about_path %></li>
   					<li><%= link_to "Contact Us", contact_us_path %></li>
+  					<li>
+    					<%= form_tag items_path, method: :get, :class => 'navbar-form' do %>
+    					  <p>
+      					  <%= text_field_tag :query, params[:query], :placeholder => "Search for Items", :class =>"input-xlarge" %>
+      					  <%= submit_tag "Search", name: nil, class: 'btn' %>
+    					  </p>
+  					  <% end %>
+  					</li>
   			</ul>	
   			<ul class="nav pull-right">
   			  <% if signed_in? %>

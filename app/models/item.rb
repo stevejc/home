@@ -26,6 +26,15 @@ class Item < ActiveRecord::Base
   validates :shop_id,  presence: true
   validates :quantity, :title, :description, :price, presence: true
   
+  
+  def self.text_search(query)
+    if query.present?
+      where("title @@ :q or description @@ :q", q: query)
+    else
+      scoped
+    end
+  end
+  
   def my_favorite?(user)
     FavoriteItem.where('item_id = ? AND user_id = ?', self.id, user).exists?  
   end
