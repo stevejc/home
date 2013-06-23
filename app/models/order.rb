@@ -22,6 +22,7 @@ class Order < ActiveRecord::Base
   has_one :user
   belongs_to :shop
   has_one :shipping_address
+  has_one :review
   
   validates :name, :address, presence: true
   

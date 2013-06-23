@@ -3,29 +3,37 @@
 </div>
 
 <div class="clearfix">
-  <div id="layout-main">
-    <div class="item-header">
-      <h3><%= @item.title %></h3>
-    </div>
-    <div class="item-images" id="full">
-      <ul>
+  <div id="layout-left">
+    <div id="layout-main">
+      <div class="item-header">
+        <h3><%= @item.title %></h3>
+      </div>
+      <div class="item-images" id="full">
+        <ul>
+          <% @item.itemimages.each do |picture| %>
+            <li id="image<%= picture.id %>"><%= image_tag(picture.image.large) %></li>
+          <% end %>
+        </ul>
+      </div>
+      <div id="thumbnails">
+        <ul>
         <% @item.itemimages.each do |picture| %>
-          <li id="image<%= picture.id %>"><%= image_tag(picture.image.large) %></li>
+            <li class="thumb"><a href="#image<%= picture.id %>"><%= image_tag picture.image.thumb if picture.image.present? %></a></li>
         <% end %>
-      </ul>
+        </ul>
+      </div>
+      <div class="item-description">
+        <h4>What's included in my order?</h4>
+        <%= @item.description %>
+      </div>   
     </div>
-    <div id="thumbnails">
-      <ul>
-      <% @item.itemimages.each do |picture| %>
-          <li class="thumb"><a href="#image<%= picture.id %>"><%= image_tag picture.image.thumb if picture.image.present? %></a></li>
-      <% end %>
-      </ul>
-    </div>
-    <div class="item-description">
-      <h4>What's included in my order?</h4>
-      <%= @item.description %>
-    </div>
+    <div id="layout-reviews">
+      <%= render 'layouts/reviews' %>
+    </div>    
   </div>
+  
+
+  
   <div id="layout-right">
     <div id="item-order">
     <div>

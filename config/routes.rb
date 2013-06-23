@@ -35,6 +35,7 @@ Home::Application.routes.draw do
   end
   resources :favorite_items
   resources :password_resets
+  resources :reviews
   
   root to: 'home#index'
   

@@ -64,11 +64,15 @@ color: red;
 }
 
 //Items Show Main
-#layout-main {
-	width: 68%;
+#layout-left {
+ 	width: 68%;
 	max-width: 660px;
 	display: inline;
 	float:left;
+}
+
+#layout-main {
+
 }
 
 .item-header {
@@ -97,6 +101,13 @@ color: red;
 	li {
 	display: inline;
 	}
+}
+
+#layout-reviews {
+	margin-top: 15px;
+	width: 100%;
+	display: inline;
+	float:left;
 }
 
 //Items Show Right

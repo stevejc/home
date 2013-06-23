@@ -22,6 +22,8 @@ class Shop < ActiveRecord::Base
   has_many :items
   has_many :line_items, :through => :items
   has_many :orders
+  has_many :reviews, :through => :orders
+  
   
   mount_uploader :image, PikUploader
   
