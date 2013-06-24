@@ -31,7 +31,7 @@ class OrdersController < ApplicationController
     @order.shop_id = @cart_order.shop_id
     @shippingaddress = ShippingAddress.find(@order.shipping_address_id)
     
-    if @order.save
+    if @order.save_with_credit_card
       @cart_order.destroy
       redirect_to root_url, success: 'Thank you for your order.'
     else

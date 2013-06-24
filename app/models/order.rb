@@ -17,7 +17,9 @@
 #
 
 class Order < ActiveRecord::Base
-  attr_accessible :name, :address, :carrier, :tracking_number, :ship_date, :shipping_address_id
+  attr_accessible :name, :address, :carrier, :tracking_number, :ship_date, :shipping_address_id, :stripe_card_token
+  attr_accessor :stripe_card_token
+  
   has_many :line_items, dependent: :destroy
   has_one :user
   belongs_to :shop
@@ -56,6 +58,19 @@ class Order < ActiveRecord::Base
   def update_status
     self.status = "Order Submitted"
     self.save
+  end
+  
+  def save_with_credit_card
+    if valid?
+      email = User.find(self.user_id).email
+      customer = Stripe::Customer.create(email: email, card: stripe_card_token)
+
+      self.save!
+    end
+  rescue Stripe::InvalidRequestError => e
+    logger.error "Stripe error while creating customer: #{e.message}"
+    errors.add :base, "There was a problem with your credit card."
+    false
   end
   
 end

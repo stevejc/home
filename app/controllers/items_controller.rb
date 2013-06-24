@@ -43,7 +43,6 @@ class ItemsController < ApplicationController
   
   def update
     @item = Item.find(params[:id])
-    @image = @item.itemimage
     if @item.update_attributes(params[:item]) 
       redirect_to youritem_path(@item), success: 'Your item was successfully updated.'
     else

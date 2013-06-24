@@ -10,6 +10,7 @@ gem 'carrierwave'
 gem 'fog'
 gem 'pg'
 gem "mini_magick"
+gem 'stripe'
 
 group :development, :test do
   gem 'annotate'
