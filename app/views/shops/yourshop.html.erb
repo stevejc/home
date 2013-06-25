@@ -59,7 +59,8 @@
 <div>
   <p>Home uses connect to process credit card transactions for every item you sell. You will need to set up an account prior to listing items for sale.</p>
 
-  <%= link_to image_tag("blue.png", :border => 0), "https://connect.stripe.com/oauth/authorize?response_type=code&client_id=ca_24P3o8cbUROumc7iBbqAhhQ1VLGqIJxq" %>
+  <%= link_to image_tag("blue.png", :border => 0), "/auth/stripe_connect?scope=read_write&stripe_landing=register" %>
+  
 </div>
 
 <%= link_to 'Back', shops_path, :class => 'btn' %>

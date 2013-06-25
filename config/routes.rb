@@ -10,6 +10,7 @@ Home::Application.routes.draw do
   resources :shops
   match '/yourshop' => 'shops#yourshop'
   match '/yourshop/edit' => 'shops#edit', :as => :edit_yourshop
+  match'/yourshop/stripe' => 'shops#stripe'
   
   resources :items
   match '/youritem/:id' => 'items#youritem', :as => :youritem

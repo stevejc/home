@@ -1,10 +1,10 @@
 <%= form_for(@order) do |f| %>
   <%= render 'shared/error_messages', object: f.object %>
   
-  <%= f.label :name, "Ship to name" %>
+  <%= f.label :name, "Billing name" %>
   <%= f.text_field :name %>
   
-  <%= f.label :address, "Ship to address:" %>
+  <%= f.label :address, "Billing address:" %>
   <%= f.text_area :address, rows: 3, cols: 40 %>
   
   <div id="stripe_error">
@@ -14,6 +14,12 @@
 <% if @order.stripe_card_token.present? %>
   Credit card has been provided.
 <% else %>
+Payment Options:<br>
+<div>
+<%= image_tag("mastercard-curved-32px.png") %>
+<%= image_tag("visa-curved-32px.png") %>
+<%= image_tag("american-express-curved-32px.png") %>
+<%= image_tag("discover-curved-32px.png") %></div><br>
   <div class="field">
     <%= label_tag :card_number, "Credit Card Number" %>
     <%= text_field_tag :card_number, nil, name: nil %>
@@ -21,6 +27,7 @@
   <div class="field">
     <%= label_tag :card_code, "Security Code on Card (CVV)" %>
     <%= text_field_tag :card_code, nil, name: nil %>
+    <%= image_tag("cvc.png") %>
   </div>
   <div class="field">
     <%= label_tag :card_month, "Card Expiration" %>

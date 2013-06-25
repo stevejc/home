@@ -11,7 +11,7 @@ class SessionsController < ApplicationController
         cookies[:remember_token] = user.remember_token
       end 
       sign_in user
-      flash[:success] = "Welcome back to Home!"
+      flash[:notice] = "Welcome back to Home!"
       redirect_back_or root_url
     else
       flash.now.alert = "Email or password is invalid"
@@ -21,7 +21,7 @@ class SessionsController < ApplicationController
   
   def destroy
     sign_out
-    flash[:success] = "You have successfully logged out"
+    flash[:notice] = "You have successfully logged out"
     redirect_to signin_path
   end
   

@@ -6,7 +6,7 @@ class CartOrdersController < ApplicationController
 
     respond_to do |format|
       format.html { redirect_to root_url,
-        success: 'Your order has been deleted' }
+        notice: 'Your order has been deleted' }
       format.json { head :no_content }
     end
   end

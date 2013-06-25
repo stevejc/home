@@ -8,7 +8,7 @@ class ItemsController < ApplicationController
     @item = Item.new(params[:item])
     @item.shop_id = current_user.shop.id
     if @item.save
-      redirect_to youritems_path, success: "You have successfully added you item!"
+      redirect_to youritems_path, notice: "You have successfully added you item!"
     else
       render :new
     end
@@ -44,7 +44,7 @@ class ItemsController < ApplicationController
   def update
     @item = Item.find(params[:id])
     if @item.update_attributes(params[:item]) 
-      redirect_to youritem_path(@item), success: 'Your item was successfully updated.'
+      redirect_to youritem_path(@item), notice: 'Your item was successfully updated.'
     else
       render :edit 
     end
@@ -53,7 +53,7 @@ class ItemsController < ApplicationController
   def list_for_sale
     @item = Item.find(params[:id])
     @item.update_status_to_available
-    redirect_to youritem_path(@item), success: 'Your item is now listed for sale.'
+    redirect_to youritem_path(@item), notice: 'Your item is now listed for sale.'
   end
   
 end

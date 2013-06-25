@@ -9,7 +9,7 @@ class ShopsController < ApplicationController
     @shop = Shop.new(params[:shop])
     @shop.user_id = current_user.id
     if @shop.save
-      redirect_to yourshop_path, success: "You have successfully added you shop!"
+      redirect_to yourshop_path, notice: "You have successfully added you shop!"
     else
       render :new
     end
@@ -31,7 +31,7 @@ class ShopsController < ApplicationController
   def update
     @shop = current_user.shop
     if @shop.update_attributes(params[:shop])
-      redirect_to yourshop_path, success: 'Your shop was successfully updated.'
+      redirect_to yourshop_path, notice: 'Your shop was successfully updated.'
     else
       render :edit 
     end
@@ -39,6 +39,18 @@ class ShopsController < ApplicationController
   
   def index
     @shops = Shop.all
+  end
+  
+  def stripe
+    raise params.inspect
+    @shop = current_user.shop
+    @shop.stripe_code = params[:code]
+    if @shop.save_with_stripe_account
+      redirect_to yourshop_path, notice: 'Thank you for your setting up your Stripe Account.'
+    else
+      render yourshop_path
+    end
+    
   end
   
 end

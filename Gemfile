@@ -8,8 +8,9 @@ gem 'rails', '3.2.13'
 gem 'bcrypt-ruby'
 gem 'carrierwave'
 gem 'fog'
+gem 'mini_magick'
+gem 'omniauth-stripe-connect'
 gem 'pg'
-gem "mini_magick"
 gem 'stripe'
 
 group :development, :test do
