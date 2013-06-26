@@ -32,7 +32,7 @@ class OrdersController < ApplicationController
     @shippingaddress = ShippingAddress.find(@order.shipping_address_id)
     
     if @order.save_with_credit_card
-      @cart_order.destroy
+      CartOrder.destroy(params[:cart_order_id])
       redirect_to root_url, notice: 'Thank you for your order.'
     else
       @cart = current_cart

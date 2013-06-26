@@ -42,7 +42,6 @@ class ShopsController < ApplicationController
   end
   
   def stripe
-    raise params.inspect
     @shop = current_user.shop
     @shop.stripe_code = params[:code]
     if @shop.save_with_stripe_account

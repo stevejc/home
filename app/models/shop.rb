@@ -34,7 +34,10 @@ class Shop < ActiveRecord::Base
   
   def save_with_stripe_account
     code_for_stripe = self.stripe_code
-    customer = `curl -X POST https://connect.stripe.com/oauth/token -d client_secret=#{ENV['STRIPE_SECRET_KEY']} -d code=#{code_for_stripe} -d grant_type=authorization_code`
+    #customer = `curl -X POST https://connect.stripe.com/oauth/token -d client_secret=#{ENV['STRIPE_SECRET_KEY']} -d code=#{code_for_stripe} -d grant_type=authorization_code`
+    
+    
+    #customer = http.request_post('https://connect.stripe.com/oauth/token', 'client_secret=#{ENV['STRIPE_SECRET_KEY']}', 'code=#{code_for_stripe}', 'grant_type=authorization_code'  )
     raise customer.inspect 
       
   end

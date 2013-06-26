@@ -37,12 +37,7 @@
   
   <tr>
     <td>
-      <%= @shippingaddress.name %><br/>
-      <%= @shippingaddress.address1 %><br/>
-      <% if !@shippingaddress.address2.empty? %>
-      <%= @shippingaddress.address2 %><br/>
-      <% end %>
-      <%= @shippingaddress.city %>, <%= @shippingaddress.state %>  <%= @shippingaddress.zip %>
+      <%= display_address(@shippingaddress) %>
     </td>
   </tr>  
    

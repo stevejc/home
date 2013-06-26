@@ -33,6 +33,7 @@ class Order < ActiveRecord::Base
   def add_line_items_from_cart(cart_order)
     cart_order.line_items.each do |item|
       item.cart_id = nil
+      item.cart_order_id = nil
       line_items << item
     end
   end
