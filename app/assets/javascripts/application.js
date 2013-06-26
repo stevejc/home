@@ -19,17 +19,22 @@
 
 jQuery(function($) {
 
-// makes tr's clickable
-$("tr[data-link]").click(function() {
-  window.location = this.dataset.link
-});
+	// makes tr's clickable
+	$("tr[data-link]").click(function() {
+	  window.location = this.dataset.link
+	});
+
+	//hides current credit card info if wants to enter new card
+	$("#current a").click(function(){
+		$("#current").addClass("hide-section");
+		$("#new").removeClass("hide-section")
+	});
 
 })
 
 $(function () {
 	$('.blog').popover({ 
-html: true
+		html: true
   })
-
 
 });

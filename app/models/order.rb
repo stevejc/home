@@ -63,13 +63,15 @@ class Order < ActiveRecord::Base
   
   def save_with_credit_card
     if valid?
-      email = User.find(self.user_id).email
-      customer = Stripe::Customer.create(email: email, card: stripe_card_token)
-      user = User.find(self.user_id)
-      user.stripe_customer_token = customer.id
-      user.last4 = customer.active_card.last4
-      user.card_type = customer.active_card.type
-      user.save
+      if !self.stripe_card_token.empty?
+        email = User.find(self.user_id).email
+        customer = Stripe::Customer.create(email: email, card: stripe_card_token)
+        user = User.find(self.user_id)
+        user.stripe_customer_token = customer.id
+        user.last4 = customer.active_card.last4
+        user.card_type = customer.active_card.type
+        user.save
+      end
       self.save!
     end
   rescue Stripe::InvalidRequestError => e

@@ -19,6 +19,22 @@ module ApplicationHelper
     content_tag(:p, address.city + ", " + address.state + " " + address.zip)), :class =>"display-address")
   end
   
+  def display_credit_card_form(section)
+    if section == "current"
+      if  current_user.last4?
+        "display-section"
+      else
+        "hide-section"
+      end
+    else
+      if  current_user.last4?
+        "hide-section"
+      else
+        "display-section"
+      end
+    end
+  end
+  
 
 end
 
