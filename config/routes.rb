@@ -29,6 +29,7 @@ Home::Application.routes.draw do
   match '/pay' => 'orders#pay'
   match '/shipmentdetails/:id/edit' => 'orders#shipment_details', :as => :edit_shipment
   match '/shipmentdetails/:id' => 'orders#updateshipping', :as => :shipment, via: :put
+  match '/billcustomer/:id' => 'orders#bill_customer', :as => :bill_customer
   
   resources :shipping_addresses
   resources :itemimages do

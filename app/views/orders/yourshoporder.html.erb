@@ -1,4 +1,18 @@
 <h1>Shop Order Show</h1>
+<div>
+<% if @order.status == "Order Shipped" %>
+  Congrats this order has been successfully completed.
+  <%= link_to 'Update Shipment Info', edit_shipment_path(@order), :class => 'btn' %>
+<% elsif @order.status == "Order Submitted" %>
+You have received an order, please verify that all ordered items are available. Once verified, please click charge customer
+<%= link_to 'Verify and Charge', bill_customer_path(@order), :class => 'btn' %>
+<% else %>
+It is now time to ship your order.
+<%= link_to 'Update Shipment Info', edit_shipment_path(@order), :class => 'btn' %>
+<% end %>
+
+
+</div>
 
 <table class="table">
   <tr>
@@ -65,4 +79,4 @@
 
 <%= link_to 'Edit', edit_order_path(@order), :class => 'btn' %>
 <%= link_to 'Back', :back, :class => 'btn' %>
-<%= link_to 'Update Shipment Info', edit_shipment_path(@order), :class => 'btn' %>
+

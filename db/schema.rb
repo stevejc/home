@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130621174152) do
+ActiveRecord::Schema.define(:version => 20130626120655) do
 
   create_table "cart_orders", :force => true do |t|
     t.integer  "cart_id"
@@ -124,6 +124,9 @@ ActiveRecord::Schema.define(:version => 20130621174152) do
     t.string   "remember_token"
     t.string   "password_reset_token"
     t.datetime "password_reset_sent_at"
+    t.integer  "last4"
+    t.string   "card_type"
+    t.string   "stripe_customer_token"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

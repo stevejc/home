@@ -21,7 +21,7 @@ class Order < ActiveRecord::Base
   attr_accessor :stripe_card_token
   
   has_many :line_items, dependent: :destroy
-  has_one :user
+  belongs_to :user
   belongs_to :shop
   has_one :shipping_address
   has_one :review
@@ -65,13 +65,28 @@ class Order < ActiveRecord::Base
     if valid?
       email = User.find(self.user_id).email
       customer = Stripe::Customer.create(email: email, card: stripe_card_token)
-
+      user = User.find(self.user_id)
+      user.stripe_customer_token = customer.id
+      user.last4 = customer.active_card.last4
+      user.card_type = customer.active_card.type
+      user.save
       self.save!
     end
   rescue Stripe::InvalidRequestError => e
     logger.error "Stripe error while creating customer: #{e.message}"
     errors.add :base, "There was a problem with your credit card."
     false
+  end
+  
+  def save_and_bill_customer
+    charge = Stripe::Charge.create(
+      :amount => (self.total_price*100).to_i ,
+      :currency => "usd",
+      :customer => self.user.stripe_customer_token ,
+      :description => "Charge for test@example.com"
+    )
+    self.status = "Paid"
+    self.save!
   end
   
 end

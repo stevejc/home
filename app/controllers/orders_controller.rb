@@ -88,4 +88,11 @@ class OrdersController < ApplicationController
     end
   end
   
+  def bill_customer
+    @order = Order.find(params[:id])
+    @order.save_and_bill_customer
+    redirect_to yourorder_path(@order), notice: "Your client's credit card was successfully charged, please ship the order immediately."
+    
+  end
+  
 end

@@ -3,7 +3,7 @@
 # Table name: reviews
 #
 #  id         :integer          not null, primary key
-#  user_id    :string(255)
+#  user_id    :integer
 #  order_id   :integer
 #  positive   :boolean
 #  comment    :text
