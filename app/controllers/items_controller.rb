@@ -1,14 +1,15 @@
 class ItemsController < ApplicationController
+  before_filter :signed_in_user, only: [:new, :create, :youritems, :youritem, :edit, :update, :list_for_sale ]
+  before_filter :correct_user, only: [:youritem, :edit, :update, :list_for_sale]
   
   def new
     @item = Item.new
   end
   
   def create
-    @item = Item.new(params[:item])
-    @item.shop_id = current_user.shop.id
+    @item = current_user.shop.items.new(params[:item])
     if @item.save
-      redirect_to youritems_path, notice: "You have successfully added you item!"
+      redirect_to youritems_path, notice: "You have successfully added your item!"
     else
       render :new
     end
@@ -33,16 +34,13 @@ class ItemsController < ApplicationController
   end
   
   def youritem
-    @item = Item.find(params[:id])
     redirect_to items_path if @item.shop.user_id != current_user.id
   end
   
   def edit
-    @item = Item.find(params[:id])
   end
   
   def update
-    @item = Item.find(params[:id])
     if @item.update_attributes(params[:item]) 
       redirect_to youritem_path(@item), notice: 'Your item was successfully updated.'
     else
@@ -51,9 +49,15 @@ class ItemsController < ApplicationController
   end
   
   def list_for_sale
-    @item = Item.find(params[:id])
     @item.update_status_to_available
     redirect_to youritem_path(@item), notice: 'Your item is now listed for sale.'
   end
   
+  private
+  
+    def correct_user
+      @item = current_user.shop.items.find_by_id(params[:id])
+      redirect_to root_url, alert: "Please try again, you don't have the requested item" if @item.nil?
+    end
+   
 end
