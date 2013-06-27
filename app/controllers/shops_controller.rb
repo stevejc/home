@@ -47,7 +47,7 @@ class ShopsController < ApplicationController
     if @shop.save_with_stripe_account
       redirect_to yourshop_path, notice: 'Thank you for your setting up your Stripe Account.'
     else
-      render yourshop_path
+      redirect_to yourshop_path, alert: 'There was an error with your Stripe Account authorization. Please try Connecting with Stripe again'
     end
     
   end

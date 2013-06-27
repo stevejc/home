@@ -2,17 +2,18 @@
 #
 # Table name: shops
 #
-#  id         :integer          not null, primary key
-#  user_id    :integer
-#  name       :string(255)
-#  city       :string(255)
-#  state      :string(255)
-#  zip        :string(255)
-#  about      :text
-#  refund     :text
-#  created_at :datetime         not null
-#  updated_at :datetime         not null
-#  image      :string(255)
+#  id                :integer          not null, primary key
+#  user_id           :integer
+#  name              :string(255)
+#  city              :string(255)
+#  state             :string(255)
+#  zip               :string(255)
+#  about             :text
+#  refund            :text
+#  created_at        :datetime         not null
+#  updated_at        :datetime         not null
+#  image             :string(255)
+#  stripe_shop_token :string(255)
 #
 
 class Shop < ActiveRecord::Base
@@ -33,13 +34,14 @@ class Shop < ActiveRecord::Base
   validates :city, presence: true, length: { maximum: 60 }
   
   def save_with_stripe_account
-    code_for_stripe = self.stripe_code
-    #customer = `curl -X POST https://connect.stripe.com/oauth/token -d client_secret=#{ENV['STRIPE_SECRET_KEY']} -d code=#{code_for_stripe} -d grant_type=authorization_code`
-    
-    
-    #customer = http.request_post('https://connect.stripe.com/oauth/token', 'client_secret=#{ENV['STRIPE_SECRET_KEY']}', 'code=#{code_for_stripe}', 'grant_type=authorization_code'  )
-    raise customer.inspect 
-      
+    customer = ActiveSupport::JSON.decode(`curl -X POST https://connect.stripe.com/oauth/token -d client_secret=#{ENV['STRIPE_SECRET_KEY']} -d code=#{self.stripe_code} -d grant_type=authorization_code`)
+    if customer['access_token'] == nil
+      errors.add(:base, "Your Stripe Authorization failed, please try again. Error: #{customer['error_description']}")
+      false
+    else
+      self.stripe_shop_token =  customer['access_token']
+      self.save!
+    end    
   end
   
 end
