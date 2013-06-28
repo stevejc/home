@@ -1,11 +1,11 @@
 // General Items Styling
-#layout-main, #item-order, #item-shop, .item-listing, #item-favorite, #item-shop-other-items, .image_lists {
+#layout-main, #item-order, #item-shop, .item-listing, #item-favorite, #item-shop-other-items, .image_lists, #item-status {
 		border: solid #e4e4e2 1px;
 		border-radius: 3px;
 		box-shadow: 0 0 2px 0 rgba(0,0,0,.1);
 }
 
-#item-order, #item-favorite, #item-shop, #item-shop-other-items {
+#item-order, #item-favorite, #item-shop, #item-shop-other-items, #item-status {
 	margin-bottom: 10px;
 	padding: 15px 20px;
 }

@@ -1,10 +1,6 @@
 <h1>Your Shop Item</h1>
 
-<h3>Status: <%= @item.status %></h3>
-<% if @item.status == "Pending" && @item.itemimages.exists? %>
-  <%= link_to "List Item for Sale", list_for_sale_path(@item) %>
-  <% end %>
-<p><%= display_status_update(@item) %></p>
+<%= display_item_status(@item) %>
 
 <table class="table">
   <tr>
