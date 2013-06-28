@@ -29,6 +29,12 @@ jQuery(function($) {
 		$("#current").addClass("hide-section");
 		$("#new").removeClass("hide-section")
 	});
+	
+	$('#button').button();
+
+	$('#button').click(function() {
+	    $(this).button('loading');
+	});
 
 })
 
