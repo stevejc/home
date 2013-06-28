@@ -1,5 +1,7 @@
 class OrdersController < ApplicationController
   before_filter :signed_in_user
+  before_filter :correct_shop, only: [:yourshoporder, :updateshipping, :bill_customer, :shipment_details]
+  
   
   def new
     @cart_order = CartOrder.find(params[:cart_order_id])
@@ -45,7 +47,6 @@ class OrdersController < ApplicationController
   end
   
   def yourshoporder
-    @order = Order.find(params[:id])
     @shippingaddress = ShippingAddress.find(@order.shipping_address_id)
     redirect_to orders_path if @order.shop_id != current_user.shop.id
   end
@@ -58,41 +59,30 @@ class OrdersController < ApplicationController
     @order = current_user.orders.find(params[:id])
     @shippingaddress = ShippingAddress.find(@order.shipping_address_id)
   end
-   
-  def edit
-    @order = Order.find(params[:id])
-  end
-  
-  def update
-    @order = Order.find(params[:id])
-    if @order.update_attributes(params[:order])
-      redirect_to order_path(@order), notice: 'Your order was successfully updated.'
-    else
-      render :edit
-    end
-    
-  end
   
   def shipment_details
-    @order = Order.find(params[:id])
   end
   
   def updateshipping
-    @order = Order.find(params[:id])
     if @order.update_attributes(params[:order])
       @order.status = "Order Shipped"
       @order.save
-      redirect_to yourorder_path(@order), notice: 'Your shipping information was successfully updated.'
+      redirect_to yourshoporder_path(@order), notice: 'Your shipping information was successfully updated.'
     else
       render :shipment_details
     end
   end
   
   def bill_customer
-    @order = Order.find(params[:id])
     @order.save_and_bill_customer
-    redirect_to yourorder_path(@order), notice: "Your client's credit card was successfully charged, please ship the order immediately."
-    
+    redirect_to yourshoporder_path(@order), notice: "Your client's credit card was successfully charged, please ship the order immediately."
   end
+  
+  private
+  
+    def correct_shop
+      @order = current_user.shop.orders.find_by_id(params[:id])
+      redirect_to root_url, alert: "Please try again, you don't have the requested order" if @order.nil?
+    end
   
 end

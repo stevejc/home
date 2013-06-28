@@ -75,8 +75,9 @@ It is now time to ship your order.
    
 </table>
 
-<%= render "display_shipping_information" %>
+<% if @order.status == "Order Shipped" %>
+  <%= render "display_shipping_information" %>
+<% end %>
 
-<%= link_to 'Edit', edit_order_path(@order), :class => 'btn' %>
 <%= link_to 'Back', :back, :class => 'btn' %>
 
