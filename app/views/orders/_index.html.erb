@@ -14,7 +14,7 @@
 
 <% @orders.each do |order| %>
   <% if status == "Store" %>
-    <tr class="blog" rel="popover" data-trigger="hover" data-content= "<%= display_items_in_order(order) %>" data-original-title="Items in order:" data-placement="bottom" data-link="<%= yourshoporder_path(order) %>">
+    <tr class="popout" rel="popover" data-trigger="hover" data-content= "<%= display_items_in_order(order) %>" data-original-title="Items in order:" data-placement="bottom" data-link="<%= yourshoporder_path(order) %>">
   <% else %>
     <tr data-link="<%= yourorder_path(order) %>">
   <% end %>

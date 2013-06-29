@@ -24,23 +24,16 @@ jQuery(function($) {
 	  window.location = this.dataset.link
 	});
 
-	//hides current credit card info if wants to enter new card
-	$("#current a").click(function(){
-		$("#current").addClass("hide-section");
-		$("#new").removeClass("hide-section")
-	});
-	
+	// activates twitter bootstrap loading button
 	$('#button').button();
-
 	$('#button').click(function() {
 	    $(this).button('loading');
 	});
-
+	
+	// activates twitter bootstrap popover functionality
+	$('.popout').popover({ 
+		html: true
+  });
+ 
 })
 
-$(function () {
-	$('.blog').popover({ 
-		html: true
-  })
-
-});
