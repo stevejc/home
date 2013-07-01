@@ -25,11 +25,13 @@ jQuery(function($) {
 	  window.location = this.dataset.link
 	});
 
-	// activates twitter bootstrap loading button
-	$('#button').button();
-	$('#button').click(function() {
-	    $(this).button('loading');
-	});
+	// function to activate twitter bootstrap loading button
+	jQuery.fn.useLoadingButton = function() {
+		$('#button').button();
+		$('#button').click(function() {
+		    $(this).button('loading');
+		});
+	}
 	
 	// activates twitter bootstrap popover functionality
 	$('.popout').popover({ 
