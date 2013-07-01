@@ -11,6 +11,7 @@ gem 'fog'
 gem 'mini_magick'
 gem 'omniauth-stripe-connect'
 gem 'pg'
+gem 'remotipart', '~> 1.0'
 gem 'stripe'
 
 group :development, :test do

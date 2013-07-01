@@ -8,7 +8,14 @@ class ItemimagesController < ApplicationController
     @itemimage = Itemimage.new(params[:itemimage])
     if @itemimage.save
       flash[:notice] = "Successfully created painting."
-      redirect_to youritem_path(@itemimage.item)
+
+      respond_to do |format|
+        if remotipart_submitted?
+          format.js
+        else
+          format.html {redirect_to youritem_path(@itemimage.item)}
+        end
+      end
     else
       render :action => 'new'
     end
