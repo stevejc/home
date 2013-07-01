@@ -32,7 +32,10 @@ class ItemimagesController < ApplicationController
     @itemimage = Itemimage.find(params[:id])
     @itemimage.destroy
     flash[:notice] = "Successfully removed the picture."
-    redirect_to youritem_path(@itemimage.item)
+    respond_to do |format|
+      format.js
+      format.html {redirect_to youritem_path(@itemimage.item)}
+    end
   end
   
 end
