@@ -7,4 +7,12 @@ module OrdersHelper
       end
       return items
     end
+    
+    def current_customer
+      if current_user.stripe_customer_token.nil?
+        "no"
+      else
+        "yes"
+      end
+    end
 end
