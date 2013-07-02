@@ -38,7 +38,7 @@ module ItemsHelper
         (content_tag(:i, " ", class: "icon-ok") + 
         content_tag(:h5, "Set-up your shop to accept credit cards with Stripe?", class: "inline") if !item.shop.stripe_shop_token?) +
         (if item.itemimages.exists? && item.shop.stripe_shop_token?
-          link_to("/items", class: "btn") do
+          link_to(list_for_sale_path(item), class: "btn") do
             "list for sale"
           end
         end)

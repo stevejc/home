@@ -9,7 +9,7 @@ class ItemsController < ApplicationController
   def create
     @item = current_user.shop.items.new(params[:item])
     if @item.save
-      redirect_to youritems_path, notice: "You have successfully added your item!"
+      redirect_to youritem_path(@item), notice: "You have successfully added your item!"
     else
       render :new
     end
