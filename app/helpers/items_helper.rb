@@ -34,7 +34,7 @@ module ItemsHelper
       if item.status == "Pending"
         content_tag(:p, "Your item is not yet listed for sale on HomePlace. Every item listed for sales requires at least one image, if your item is ready to go update the status to Available.") + 
         (content_tag(:i, " ", class: "icon-ok") + 
-        content_tag(:h5, "Add at least 1 image!") if item.itemimages.empty?) + 
+        content_tag(:h5, "Add at least 1 image!", class: "inline") if !item.itemimages.exists?) + 
         (content_tag(:i, " ", class: "icon-ok") + 
         content_tag(:h5, "Set-up your shop to accept credit cards with Stripe?", class: "inline") if !item.shop.stripe_shop_token?) +
         (if item.itemimages.exists? && item.shop.stripe_shop_token?

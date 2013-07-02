@@ -7,13 +7,11 @@ class ItemimagesController < ApplicationController
   def create
     @itemimage = Itemimage.new(params[:itemimage])
     if @itemimage.save
-      flash[:notice] = "Successfully created painting."
-
       respond_to do |format|
         if remotipart_submitted?
           format.js
         else
-          format.html {redirect_to youritem_path(@itemimage.item)}
+          format.html {redirect_to youritem_path(@itemimage.item), notice: "Successfully loaded your image."}
         end
       end
     else
@@ -30,11 +28,11 @@ class ItemimagesController < ApplicationController
   
   def destroy
     @itemimage = Itemimage.find(params[:id])
+    @item = @itemimage.item
     @itemimage.destroy
-    flash[:notice] = "Successfully removed the picture."
     respond_to do |format|
       format.js
-      format.html {redirect_to youritem_path(@itemimage.item)}
+      format.html {redirect_to youritem_path(@itemimage.item), notice: "Successfully removed the image."}
     end
   end
   
