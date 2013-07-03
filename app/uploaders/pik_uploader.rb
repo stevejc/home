@@ -36,7 +36,12 @@ class PikUploader < CarrierWave::Uploader::Base
   # end
 
   # Create different versions of your uploaded files:
+  version :large_profile do
+    process :resize_to_limit => [600, 600]
+  end
+  
   version :thumb do
+    process :crop
     process :resize_to_fill => [62, 62]
   end
   
@@ -46,6 +51,20 @@ class PikUploader < CarrierWave::Uploader::Base
   
   version :large do
     process :resize_to_fill => [639, 479.25]
+  end
+  
+  def crop
+    if model.crop_x.present?
+      resize_to_limit(600, 600)
+      manipulate! do |img|
+        x = model.crop_x
+        y = model.crop_y
+        w = model.crop_w
+        h = model.crop_h
+        img.crop "#{w}x#{h}+#{x}+#{y}"
+        img
+      end
+    end
   end
     
 

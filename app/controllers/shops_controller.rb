@@ -9,7 +9,11 @@ class ShopsController < ApplicationController
     @shop = Shop.new(params[:shop])
     @shop.user_id = current_user.id
     if @shop.save
-      redirect_to yourshop_path, notice: "You have successfully added you shop!"
+      if params[:shop][:image].present?
+        render :crop
+      else
+        redirect_to yourshop_path, notice: 'You have successfully added your shop!'
+      end
     else
       render :new
     end
@@ -31,7 +35,11 @@ class ShopsController < ApplicationController
   def update
     @shop = current_user.shop
     if @shop.update_attributes(params[:shop])
-      redirect_to yourshop_path, notice: 'Your shop was successfully updated.'
+      if params[:shop][:image].present?
+        render :crop
+      else
+        redirect_to yourshop_path, notice: 'Your shop was successfully updated.'
+      end
     else
       render :edit 
     end

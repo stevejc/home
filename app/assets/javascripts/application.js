@@ -13,6 +13,7 @@
 //= require jquery
 //= require jquery-ui
 //= require jquery_ujs
+//= require jquery.Jcrop
 //= require jquery.remotipart
 //= require twitter/bootstrap
 //= require_tree .
