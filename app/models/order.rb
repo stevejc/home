@@ -81,12 +81,20 @@ class Order < ActiveRecord::Base
   end
   
   def save_and_bill_customer
-    charge = Stripe::Charge.create(
-      :amount => (self.total_price*100).to_i ,
-      :currency => "usd",
-      :customer => self.user.stripe_customer_token ,
-      :description => "Charge for test@example.com"
+    
+    customer_token = Stripe::Token.create(
+      {:customer => self.user.stripe_customer_token},
+      self.shop.stripe_shop_token # user's access token from the Stripe Connect flow
     )
+    
+    charge = Stripe::Charge.create({
+      :amount => (self.total_price*100).to_i,
+      :currency => "usd",
+      :card => customer_token['id'], # obtained with Stripe.js
+      :description => "Charge for test@example.com",
+      :application_fee => (self.total_price * 0.035 * 100).to_i
+    }, self.shop.stripe_shop_token)
+    
     self.status = "Paid"
     self.save!
   end
