@@ -35,7 +35,7 @@
             </div>
             <div><%= link_to item.title, item_path(item) %></div>
             <%= link_to item.shop.name, shop_path(item.shop) %>   
-            <span class="right"><%= number_to_currency(item.price) %></span>   
+            <span class="right"><%= number_to_currency(item.price) %></span> 
           </li>
         <% end %>
       </ul>
@@ -51,4 +51,12 @@ Other things to try
 Looking for inspiration? <%= link_to "Visit our homepage", root_path %>
 <% end %>
 
-
+<div class="more-categories row-fluid">
+  <h4>More Vintage Find Categories</h4>
+  <ul>
+    <li><%= link_to "Lighting", items_path %></li>
+    <li><%= link_to "Hardware", items_path %></li>
+    <li><%= link_to "Furniture", items_path %></li>
+    <li><%= link_to "Salvage", items_path %></li>
+  </ul>
+</div>
