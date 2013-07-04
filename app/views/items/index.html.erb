@@ -1,4 +1,23 @@
-<h1>Items Index</h1>
+<div class="category-header clearfix">
+  <h1 class="inline">Lighting</h1>
+  <div class="right">
+    <ul>
+      <li><%= link_to "Chandeliers", items_path %></li>
+      <li><%= link_to "Flush Mounts", items_path %></li>
+      <li><%= link_to "Pendants", items_path %></li>
+    </ul>
+    <ul>
+      <li><%= link_to "Semi Flush Mounts", items_path %></li>
+      <li><%= link_to "Table", items_path %></li>
+      <li><%= link_to "Floor", items_path %></li>
+    </ul>
+    <ul>
+      <li><%= link_to "Wall", items_path %></li>
+      <li><%= link_to "Shades", items_path %></li>
+      <li><%= link_to "Switchplates & Switches", items_path %></li>
+    </ul>
+  </div>
+</div>
 
 <% if @items.exists? %>
   <% @items.in_groups_of(4,false) do |row_items| %>
